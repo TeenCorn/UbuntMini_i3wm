@@ -104,14 +104,17 @@ bindsym $mod+a focus parent
 set $ws1 "1:  "
 set $ws2 "2:  "
 set $ws3 "3:  "
+set $ws4 "4:  "
+set $ws5 "5:orn "
+set $ws6 "6:"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
@@ -121,9 +124,9 @@ bindsym $mod+0 workspace 10
 bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
 bindsym $mod+Shift+3 move container to workspace $ws3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
@@ -164,36 +167,44 @@ mode "resize" {
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-	position top
-        tray_output none
-        status_command ~/bumblebee-status/bumblebee-status -m nic cpu disk:root memory date time amixer battery -p root.path=/ date.format="%a, %b %d %Y" -t powerline
+	tray_output none
+	workspace_buttons yes
+	strip_workspace_numbers yes
+        font pango:DejaVu Sans Mono for Powerline 10 
+        position top
+        colors {
+                background #282828
+                focused_workspace #637200 #637200 #002b36
+		separator #000000
+        }
+        status_command ~/bumblebee-status/bumblebee-status -d -m cpu disk:root nic memory date time layout amixer kernel -p root.path=/ date.format="%a, %b %d %Y" time.format="%l:%M:%S%P" -t powerline
 
 }
 
 #ALWAYS ON THINGS
-exec_always feh --bg-scale /home/joeshmoe/Downloads/Bridges.jpg #Applies background to desktop
-#exec_always gnome-terminal #gnome terminal is lauched at startup
-exec_always compton #Allows transparency 
-#exec_always --no-startup-id nm-applet
+exec_always feh --bg-scale ~/Pictures/shiny_colors.jpeg 		#Applies background to desktop
+exec_always compton 							#Allows transparency 
 
 #SHUTDOWN COMMAND
-bindsym $mod+Shift+x exec shutdown now
-bindsym $mod+Shift+delete exec reboot
-# Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ unmute	# Raises Volume
-bindsym XF86AudioLowerVolume exec amixer -q set Master 5%- unmute	# Lowers Volume
-#bindsym XF86AudioMute exec amixer -q set Master toggle 			# Toggle Mute
-bindsym XF86AudioMute exec amixer -D pulse set Master Playback Switch toggle
+bindsym $mod+Shift+x exec shutdown now					#Shutdown computer
+bindsym $mod+Shift+BackSpace exec reboot				#Reboots computer
+
+#AMIXER CONTROLS
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ unmute		# Raises Volume
+bindsym XF86AudioLowerVolume exec amixer -q set Master 5%- unmute		# Lowers Volume
+bindsym XF86AudioMute exec amixer -D pulse set Master Playback Switch toggle 	#Mutes/Unmutes volume
 
 #WINDOW SETTINGS
 new_window 1pixel
 
 #KEYBINDINGS FOR APPS
-bindsym $mod+Return workspace $ws1; exec i3-sensible-terminal		 	#Starts a terminal
+bindsym $mod+Return exec i3-sensible-terminal		 			#Starts a terminal
 bindsym $mod+q workspace $ws2; exec qutebrowser					#Starts qutebrowser
 bindsym $mod+g workspace $ws3; exec gimp					#starts gimp
 bindsym $mod+r exec --no-startup-id i3-sensible-terminal -e ranger		#starts ranger
-bindsym $mod+t exec thunar
+bindsym $mod+t exec thunar							#starts thunar
+bindsym $mod+Shift+f workspace $ws2; exec firefox				#starts firefox
+bindsym $mod+Shift+v workspace $ws4; exec i3-sensible-terminal -e vim		#starts vim
 
 #FOR WINDOW COMMANDS
 for_window [class="Thunar"] floating enable 
