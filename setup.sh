@@ -15,3 +15,4 @@ sudo echo "deb http://debian.sur5r.net/i3/ $(grep '^DISTRIB_CODENAME=' /etc/lsb-
 sudo apt-get update -qq
 sudo apt-get install -yy i3
 
+sudo apt-get install python-netifaces python-psutil python-requests -y 		## Dependencies needed to get Bumblebee-status running
