@@ -45,7 +45,7 @@ set $pink #ee829f
 set $peach #f99170
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec rofi -show run -lines 5 -eh 2 -width 100 -padding 380 -opacity "80" -bw 0 -bc "$lightBlack" -bg "$lighterBlack" -fg "$white" -hlbg "$whitish" -columns 2 -hlfg "#9575cd"
+bindsym $mod+d exec rofi -show run -lines 5 -eh 2 -width 100 -padding 180 -opacity "80" -bw 0 -bc "$lightBlack" -bg "$lighterBlack" -fg "$white" -hlbg "$whitish" -columns 2 -hlfg "#9575cd"
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -177,12 +177,12 @@ bar {
                 focused_workspace #637200 #637200 #002b36
 		separator #000000
         }
-        status_command ~/bumblebee-status/bumblebee-status -d -m cpu disk:root nic memory date time layout amixer kernel -p root.path=/ date.format="%a, %b %d %Y" time.format="%l:%M:%S%P" -t powerline
+        status_command ~/bumblebee-status/bumblebee-status -d -m cpu disk:root memory date time -p root.path=/ date.format="%a, %b %d %Y" time.format="%l:%M:%S%P" -t powerline
 
 }
 
 #ALWAYS ON THINGS
-exec_always feh --bg-scale ~/Pictures/shiny_colors.jpeg 		#Applies background to desktop
+exec_always feh --bg-scale ~/Pictures/pier.jpg		 		#Applies background to desktop
 exec_always compton 							#Allows transparency 
 
 #SHUTDOWN COMMAND
@@ -198,13 +198,13 @@ bindsym XF86AudioMute exec amixer -D pulse set Master Playback Switch toggle 	#M
 new_window 1pixel
 
 #KEYBINDINGS FOR APPS
-bindsym $mod+Return exec i3-sensible-terminal		 			#Starts a terminal
+bindsym $mod+Return exec urxvt				 			#Starts a terminal
 bindsym $mod+q workspace $ws2; exec qutebrowser					#Starts qutebrowser
 bindsym $mod+g workspace $ws3; exec gimp					#starts gimp
-bindsym $mod+r exec --no-startup-id i3-sensible-terminal -e ranger		#starts ranger
+bindsym $mod+r exec --no-startup-id urvxt -e ranger				#starts ranger
 bindsym $mod+t exec thunar							#starts thunar
 bindsym $mod+Shift+f workspace $ws2; exec firefox				#starts firefox
-bindsym $mod+Shift+v workspace $ws4; exec i3-sensible-terminal -e vim		#starts vim
+bindsym $mod+Shift+v workspace $ws4; exec urxvt -e vim				#starts vim
 
 #FOR WINDOW COMMANDS
 for_window [class="Thunar"] floating enable 
