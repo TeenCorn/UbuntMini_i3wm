@@ -48,4 +48,4 @@ wget https://raw.githubusercontent.com/Corwind/termite-install/master/termite-in
 ./termite-install.sh
 
 ##Getting configs
-wget https://raw.githubusercontent.com/TeenCorn/UbuntMini_i3wm/master/config https://raw.githubusercontent.com/TeenCorn/UbuntMini_i3wm/master/.vimrc https://raw.githubusercontent.com/TeenCorn/UbuntuMini_i3wm/master/termite.config
+wget https://raw.githubusercontent.com/TeenCorn/UbuntMini_i3wm/master/config https://raw.githubusercontent.com/TeenCorn/UbuntMini_i3wm/master/.vimrc https://raw.githubusercontent.com/TeenCorn/UbuntMini_i3wm/master/termite.config
