@@ -4,7 +4,7 @@
 
 cd ~/
 sudo apt-get update -qq			## Updates the packages so that you may install the lastest and greatest
-sudo apt-get install -yy -q xorg vim rofi feh compton pulseaudio firefox scrot ranger thunar ubuntu-restricted-extras git software-properties-common w3m mpv build-essential automake checkinstall lxappearance gtk-chtheme qt4-qtconfig network-manager redshift-gtk alarm-clock-applet
+sudo apt-get install -yy -q xorg vim rofi feh compton pulseaudio firefox scrot ranger thunar ubuntu-restricted-extras git software-properties-common w3m mpv build-essential automake checkinstall lxappearance gtk-chtheme qt4-qtconfig network-manager redshift-gtk alarm-clock-applet mpd mpc ncmpcpp
 
 sudo apt-get purge --auto-remove flashplugin-installer -yy
 sudo apt-get -yy install gstreamer1.0-plugins-{base,good,bad,ugly} gstreamer1.0-libav ## Getting a youtube videos to work without flash
@@ -34,6 +34,18 @@ cp ~/fonts/Inconsolata/Inconsolata\ for\ Powerline.otf ~/.fonts/
 
 rm -rf Font-Awesome fonts
 
-wget https://raw.githubusercontent.com/TeenCorn/UbuntMini_i3wm/master/config https://raw.githubusercontent.com/TeenCorn/UbuntMini_i3wm/master/.vimrc https://raw.githubusercontent.com/TeenCorn/UbuntMini_i3wm/master/.Xresources
+##Installing icon pack
+git clone https://github.com/madmaxms/iconpack-obsidian.git
+mkdir .icons
+mv iconpack-obsidian .icons
 
-wget https://raw.githubusercontent.com/Corwind/termite-install/master/termite-install.sh	## Termite terminal install
+##Installing prefered theme
+sudo apt-add-repository ppa:tista/adapta
+sudo apt update -y && sudo apt install adapta-gtk-theme -y
+
+##Getting configs
+wget https://raw.githubusercontent.com/TeenCorn/UbuntMini_i3wm/master/config https://raw.githubusercontent.com/TeenCorn/UbuntMini_i3wm/master/.vimrc
+
+##Termite Install
+wget https://raw.githubusercontent.com/Corwind/termite-install/master/termite-install.sh
+./termite-install.sh
