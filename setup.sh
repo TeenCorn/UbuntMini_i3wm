@@ -36,3 +36,4 @@ rm -rf Font-Awesome fonts
 
 wget https://raw.githubusercontent.com/TeenCorn/UbuntMini_i3wm/master/config https://raw.githubusercontent.com/TeenCorn/UbuntMini_i3wm/master/.vimrc https://raw.githubusercontent.com/TeenCorn/UbuntMini_i3wm/master/.Xresources
 
+wget https://raw.githubusercontent.com/Corwind/termite-install/master/termite-install.sh	## Termite terminal install
