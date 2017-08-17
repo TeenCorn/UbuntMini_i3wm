@@ -4,7 +4,7 @@
 
 cd ~/
 sudo apt-get update -qq			## Updates the packages so that you may install the lastest and greatest
-sudo apt-get install -yy -q xorg vim rofi feh compton pulseaudio firefox scrot ranger thunar ubuntu-restricted-extras git software-properties-common w3m mpv build-essential automake checkinstall lxappearance gtk-chtheme qt4-qtconfig network-manager redshift-gtk alarm-clock-applet mpd mpc ncmpcpp
+sudo apt-get install -yy -q xorg vim rofi feh compton pulseaudio pasystray pavucontrol firefox scrot ranger thunar ubuntu-restricted-extras git software-properties-common w3m mpv build-essential automake checkinstall lxappearance gtk-chtheme qt4-qtconfig network-manager redshift-gtk alarm-clock-applet mpd mpc ncmpcpp
 
 sudo apt-get purge --auto-remove flashplugin-installer -yy
 sudo apt-get -yy install gstreamer1.0-plugins-{base,good,bad,ugly} gstreamer1.0-libav ## Getting a youtube videos to work without flash
