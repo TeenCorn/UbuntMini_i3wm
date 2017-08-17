@@ -137,7 +137,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec i3-msg exit
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -167,10 +167,11 @@ mode "resize" {
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-	tray_output none
+	tray_output HDMI-0
+	tray_padding 2
 	workspace_buttons yes
 	strip_workspace_numbers yes
-        font pango:DejaVu Sans Mono for Powerline 10 
+        font pango:DejaVu Sans Mono for Powerline 10
         position top
         colors {
                 background #282828
@@ -182,32 +183,42 @@ bar {
 }
 
 #ALWAYS ON THINGS
-exec_always feh --bg-scale ~/Pictures/pier.jpg		 		#Applies background to desktop
-exec_always compton 							#Allows transparency 
+exec_always feh --bg-scale ~/Pictures/Mountains.jpg		 		#Applies background to desktop
+exec_always compton 							#Allows transparency
+exec --no-startup-id nm-applet						# Puts nm icon in corner
+exec --no-startup-id pasystray						#Gives me a way to convinently control volume levels as well as inputs and outputs
+exec --no-startup-id alarm-clock-applet				#Alarm clock applet
+exec --no-startup-id redshift-gtk
 
 #SHUTDOWN COMMAND
 bindsym $mod+Shift+x exec shutdown now					#Shutdown computer
 bindsym $mod+Shift+BackSpace exec reboot				#Reboots computer
 
-#AMIXER CONTROLS
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ unmute		# Raises Volume
-bindsym XF86AudioLowerVolume exec amixer -q set Master 5%- unmute		# Lowers Volume
-bindsym XF86AudioMute exec amixer -D pulse set Master Playback Switch toggle 	#Mutes/Unmutes volume
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 
 #WINDOW SETTINGS
 new_window 1pixel
 
 #KEYBINDINGS FOR APPS
-bindsym $mod+Return exec urxvt				 			#Starts a terminal
+bindsym $mod+Return exec termite				 		#Starts a terminal
 bindsym $mod+q workspace $ws2; exec qutebrowser					#Starts qutebrowser
 bindsym $mod+g workspace $ws3; exec gimp					#starts gimp
-bindsym $mod+r exec --no-startup-id urvxt -e ranger				#starts ranger
+bindsym $mod+r exec --no-startup-id termite -e ranger				#starts ranger
 bindsym $mod+t exec thunar							#starts thunar
 bindsym $mod+Shift+f workspace $ws2; exec firefox				#starts firefox
-bindsym $mod+Shift+v workspace $ws4; exec urxvt -e vim				#starts vim
+bindsym $mod+Shift+v workspace $ws4; exec termite -e vim			#starts vim
 
 #FOR WINDOW COMMANDS
-for_window [class="Thunar"] floating enable 
+for_window [class="Thunar"] floating enable
 
 #RESIZING WINDOWS
 bindsym $mod+y resize grow width 30 px or 30ppt
@@ -229,4 +240,4 @@ bindsym e exec --no-startup-id setxkbmap us ,mode "default"
 bindsym Return mode "default"
 bindsym Escape mode "default"
 }
-bindsym $mod+Shift+z mode "$keyboard_layout" 
+bindsym $mod+Shift+z mode "$keyboard_layout"
