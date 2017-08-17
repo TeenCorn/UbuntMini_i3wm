@@ -43,9 +43,9 @@ mv iconpack-obsidian .icons
 sudo apt-add-repository ppa:tista/adapta
 sudo apt update -y && sudo apt install adapta-gtk-theme -y
 
-##Getting configs
-wget https://raw.githubusercontent.com/TeenCorn/UbuntMini_i3wm/master/config https://raw.githubusercontent.com/TeenCorn/UbuntMini_i3wm/master/.vimrc
-
 ##Termite Install
 wget https://raw.githubusercontent.com/Corwind/termite-install/master/termite-install.sh
 ./termite-install.sh
+
+##Getting configs
+wget https://raw.githubusercontent.com/TeenCorn/UbuntMini_i3wm/master/config https://raw.githubusercontent.com/TeenCorn/UbuntMini_i3wm/master/.vimrc https://raw.githubusercontent.com/TeenCorn/UbuntuMini_i3wm/master/termite.config
