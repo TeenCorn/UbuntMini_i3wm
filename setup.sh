@@ -18,9 +18,10 @@ flash_delete ()
 	if [ "$input" = "y" ]
 	then
 		sudo apt purge --auto-remove flashplugin-installer -yy
-	else
-		sudo apt -yy install gstreamer1.0-plugins-{base,good,bad,ugly} gstreamer1.0-libav ## Getting a youtube videos to work without flash
 	fi
+	
+	sudo apt -yy install gstreamer1.0-plugins-{base,good,bad,ugly} gstreamer1.0-libav ## Getting a youtube videos to work without flash
+
 }
 
 i3_install ()
