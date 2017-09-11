@@ -90,6 +90,7 @@ confs ()
 	cp -R .config/polybar/ ~/.config/
 	cp -R .config/termite ~/.config/
 	cp -R .config/termite2 ~/.config/
+	cp -R .config/ranger ~/.config/
 	cp -R .config/.vimrc ~/
 	cd .. && rm -rf UbuntuMini_i3wm/
 }
@@ -102,3 +103,4 @@ git_stuff
 term
 polybar
 confs
+cd ~/ && rm setup.sh
