@@ -57,10 +57,12 @@ git_stuff ()
 
 term ()
 {
+	cd ~/
 	##Termite Install
 	wget https://raw.githubusercontent.com/Corwind/termite-install/master/termite-install.sh
 	chmod +x termite-install.sh
 	./termite-install.sh
+	rm termite-install.sh
 }
 
 polybar_install ()
@@ -80,13 +82,16 @@ confs ()
 	##Getting configs
 	git clone https://github.com/TeenCorn/UbuntuMini_i3wm.git
 	cd UbuntuMini_i3wm/
-	cp -R .config/i3/ ~/.config/
+	mkdir ~/.config
+	mkdir ~/.config/i3
+	cp -R .config/i3 ~/.config/
 	cp -R .config/.mpd/ ~/.config/
 	cp -R .config/.ncmpcpp/ ~/.config/
 	cp -R .config/polybar/ ~/.config/
 	cp -R .config/termite ~/.config/
 	cp -R .config/termite2 ~/.config/
 	cp -R .config/.vimrc ~/
+	cd .. && rm -rf UbuntuMini_i3wm/
 }
 
 basic_programs
