@@ -95,4 +95,5 @@ i3_install
 python_stuff
 git_stuff
 term
+polybar
 confs
