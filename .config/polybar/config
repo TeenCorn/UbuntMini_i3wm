@@ -27,7 +27,7 @@ height = 27
 radius = 0.0
 fixed-center = true
 
-background = ${colors.background}
+background = #000f0f0f
 foreground = ${colors.foreground}
 
 line-size = 3
@@ -46,9 +46,10 @@ font-0 = fixed:pixelsize=10;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 font-3 = FontAwesome:pixelsize=14;0
+font-4 = TakaoGothic:pixelsize=12;0
 
 modules-left = i3 mpd
-modules-center = mpd
+modules-center = xwindow
 modules-right = memory filesystem xbacklight xkeyboard cpu date powermenu battery0 battery1
 
 tray-position = right
@@ -160,12 +161,12 @@ type = internal/mpd
 host = 127.0.0.1
 port = 6601
 
-format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
-format-playing = ${self.format-online}
-format-pause = ${self.format-online}
-format-stopped = ${self.format-online}
+format-online = <label-song> <label-time>
+;format-playing = ${self.format-online}
+;format-pause = ${self.format-online}
+;format-stopped = ${self.format-online}
 
-label-song = 𝄞 %artist% - %title%
+;label-song = 𝄞 %artist% - %title%
 
 icon-prev = 
 icon-stop = 
@@ -173,7 +174,7 @@ icon-play = 
 icon-pause = 
 icon-next = 
 
-label-song-maxlen = 25
+label-song-maxlen = 70
 label-song-ellipsis = true
 
 [module/xbacklight]
