@@ -157,22 +157,21 @@ exec_always --no-startup-id feh --bg-scale ~/.config/wall.jpg			#Applies backgro
 exec --no-startup-id compton 								#Allows transparency
 exec --no-startup-id nm-applet						# Puts nm icon in corner
 exec --no-startup-id pasystray						#Gives me a way to convinently control volume levels as well as inputs and outputs
-exec --no-startup-id alarm-clock-applet					#Alarm clock applet
-exec_always --no-startup-id redshift-gtk					#So my eye don't get fucked
 exec --no-startup-id mpd						#Music player daemon
-exec --no-startup-id $term --name=dropdown --config=/home/teencorn/.config/termite2/config 				#Dropdown term
+exec --no-startup-id $term --name=dropdown 				#Dropdown term
 exec --no-startup-id synclient TouchpadOff=1			#Turns off touchpad
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 ##SHUTDOWN COMMAND
-bindsym $mod+Shift+x exec /sbin/shutdown now					#Shutdown computer
-bindsym $mod+Shift+BackSpace exec /sbin/reboot				#Reboots computer
+bindsym $mod+Shift+x exec systemctl poweroff 				#Shutdown computer
+bindsym $mod+Shift+BackSpace exec systemctl reboot 			#Reboots computer
 bindsym $mod+BackSpace exec .config/i3/lock.sh 				#Locks and suspends
 
 ##Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute 1 toggle
 
 #MEDIA_KEYS
 bindsym XF86AudioPlay exec playerctl play
@@ -190,7 +189,7 @@ bindsym $mod+Shift+comma exec mpc -p 6601 seek -10
 bindsym $mod+Return exec $term				 		#Starts a terminal
 bindsym $mod+q workspace $ws2; exec qutebrowser					#Starts qutebrowser
 bindsym $mod+g workspace $ws3; exec gimp					#starts gimp
-bindsym $mod+r exec --no-startup-id $term --name=ranger --config=/home/teencorn/.config/termite2/config -e ranger				#starts ranger
+bindsym $mod+r exec --no-startup-id $term --name=ranger -e ranger				#starts ranger
 bindsym $mod+e exec thunar							#starts thunar
 bindsym $mod+Shift+f workspace $ws2; exec firefox				#starts firefox
 bindsym $mod+v workspace $ws3; exec termite -e vim			#starts vim
@@ -198,16 +197,18 @@ bindsym $mod+Shift+s scratchpad show
 bindsym $mod+F8 exec /home/teencorn/android-studio/bin/studio.sh
 bindsym $mod+semicolon exec $term --name=htop --config=/home/teencorn/.config/termite2/config -e htop
 bindsym $mod+F12 exec $term --name=ncmpcpp -e ncmpcpp
+bindsym $mod+w exec $term --name=w3m -e "w3m -B"
+bindsym $mod+m exec $term --name=youtube -e mpsyt
 
 ##i3wm_AUTISM#############################################################
 
 #WINDOW_SETTINGS
-new_window pixel 2	
+new_window pixel 3	
 
 for_window [class="Thunar"] floating enable	#When opened, make it float
 for_window [instance="dropdown"] floating enable
 for_window [instance="dropdown"] move scratchpad; [instance="dropdown"] scratchpad show; move scratchpad
-for_window [instance="ranger"] floating enable
+#for_window [instance="ranger"] floating enable
 for_window [instance="htop"] floating enable
 
 assign [class="mpv"] $ws8	#When mpv opens, its move to $ws8
@@ -223,8 +224,8 @@ bindsym $mod+Shift+u resize shrink height 30 px or 30 ppt
 bindsym $mod+F6 exec scrot -q 100 -e 'mv $f ~/Pictures/Screenshots'
 
 #Brightness adjustment
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
 
 #LANGUAGE
 #set $keyboard_layout Keyboard Layout: (j) Canadian French, (e) US English
