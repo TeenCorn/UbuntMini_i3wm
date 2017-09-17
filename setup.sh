@@ -2,14 +2,16 @@
 
 ## INSTALL SCRIPT FOR UBUNTU MINIMAL
 
+## Downloads the all of the programs I use
 basic_programs ()
 {
 	cd ~/
-	sudo apt update -qq			## Updates the packages so that you may install the lastest and greatest
+	sudo apt update -qq
 	sudo apt install -yy -q xorg vim rofi feh compton pulseaudio pasystray pavucontrol firefox scrot ranger thunar ubuntu-restricted-extras git software-properties-common w3m mpv build-essential cmake automake checkinstall lxappearance gtk-chtheme qt4-qtconfig network-manager redshift-gtk alarm-clock-applet mpd mpc ncmpcpp zip gdebi htop fonts-takao xbacklight
 }
 
-
+## Prompts the user if they would like to delete flash, mainly due to security concerns, after downloading all the basic programs.
+## I have not learned how to install ubuntu-restricted-extras without flash yet so that will be done later on.
 flash_delete ()
 {
 	echo "Would you like to delete flash? y/n"
@@ -24,6 +26,8 @@ flash_delete ()
 
 }
 
+## Downloads the lastest stable version of i3wm for Ubuntu. Don't like the one in the regular repo since it can't use json. Bumblebee-status and Polybar
+## use json so that is the reason for it.
 i3_install ()
 {
 	clear
@@ -35,6 +39,7 @@ i3_install ()
 	sudo apt install -yy i3
 }
 
+## I don't need all the python packages here. Haven't figured out which ones I don't need.
 python_stuff ()
 {
 	sudo apt -yy install python3.5 python3-lxml python-tox python3-pyqt5 python3-pyqt5.qtwebkit python3-pyqt5.qtquick python3-sip python3-jinja2 python3-pygments python3-yaml python3-pip	## Installing python
@@ -42,6 +47,7 @@ python_stuff ()
 
 }
 
+## Downloads all my fonts and my plugin manager for vim
 git_stuff ()
 {
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim	## Vim plugins
@@ -55,6 +61,7 @@ git_stuff ()
 	rm -rf Font-Awesome fonts
 }
 
+## Downloads my terminal emulator termite
 term ()
 {
 	cd ~/
@@ -65,6 +72,7 @@ term ()
 	rm termite-install.sh
 }
 
+## Downloads all dependencies for polybar and builds it from github.
 polybar_install ()
 {
 	cd ~/
@@ -77,6 +85,7 @@ polybar_install ()
 	sudo make install
 }
 
+## Downloads all my configurations for my setup
 confs ()
 {
 	##Getting configs
