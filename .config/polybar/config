@@ -9,8 +9,9 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #222
-background-alt = #444
+background = #000f0f0f
+;change back-alt to change i3 background
+background-alt = #676767
 ;foreground = ${xrdb:color7:#222}
 foreground = #dfdfdf
 foreground-alt = #555
@@ -27,7 +28,7 @@ height = 27
 radius = 0.0
 fixed-center = true
 
-background = #000f0f0f
+background = ${colors.background}
 foreground = ${colors.foreground}
 
 line-size = 3
@@ -48,9 +49,9 @@ font-2 = siji:pixelsize=10;1
 font-3 = FontAwesome:pixelsize=14;0
 font-4 = TakaoGothic:pixelsize=12;0
 
-modules-left = i3 mpd
+modules-left = mpd
 modules-center = xwindow
-modules-right = memory filesystem xbacklight xkeyboard cpu date powermenu battery0 battery1
+modules-right = filesystem date pavolume battery0 
 
 tray-position = right
 tray-padding = 2
@@ -68,6 +69,53 @@ tray-transparent = false
 ;scroll-up = i3wm-wsnext
 ;scroll-down = i3wm-wsprev
 
+[bar/bar2]
+;monitor = ${env:MONITOR:HDMI-1}
+width = 100%
+height = 27
+;offset-x = 1%
+;offset-y = 1%
+radius = 0.0
+fixed-center = true
+bottom = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = fixed:pixelsize=10;1
+font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-2 = siji:pixelsize=10;1
+font-3 = FontAwesome:pixelsize=14;0
+font-4 = TakaoGothic:pixelsize=12;0
+
+modules-left = i3 xbacklight
+modules-center = xkeyboard 
+modules-right = cpu memory battery1
+
+;wm-restack = bspwm
+;wm-restack = i3
+
+;override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:50:...%
@@ -76,15 +124,16 @@ label = %title:0:50:...%
 type = internal/xkeyboard
 blacklist-0 = num lock
 
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground}
 format-prefix-underline = ${colors.secondary}
 
-label-layout = %layout%
+label-layout = "%layout% "
+;label-layout-background = ${colors.secondary}
 label-layout-underline = ${colors.secondary}
 
-label-indicator-padding = 2
-label-indicator-margin = 1
+label-indicator-padding = 0
+label-indicator-margin = 0
 label-indicator-background = ${colors.secondary}
 label-indicator-underline = ${colors.secondary}
 
@@ -96,7 +145,7 @@ mount-0 = /
 
 fixed-values = true
 
-label-mounted = Disk:%used%
+label-mounted = "  Disk:%used% "
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
@@ -151,7 +200,7 @@ label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
-label-urgent = %name%!
+label-urgent = %name% !
 label-urgent-background = ${module/bspwm.label-urgent-background}
 label-urgent-padding = ${module/bspwm.label-urgent-padding}
 
@@ -161,7 +210,7 @@ type = internal/mpd
 host = 127.0.0.1
 port = 6601
 
-format-online = <label-song> <label-time>
+format-online = <label-song> <label-time>  <bar-progress>
 ;format-playing = ${self.format-online}
 ;format-pause = ${self.format-online}
 ;format-stopped = ${self.format-online}
@@ -173,6 +222,11 @@ icon-stop = 
 icon-play = 
 icon-pause = 
 icon-next = 
+
+bar-progress-width = 45
+bar-progress-indicator = |
+bar-progress-fill = ─
+bar-progress-empty = ─
 
 label-song-maxlen = 70
 label-song-ellipsis = true
@@ -202,10 +256,20 @@ card = intel_backlight
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = " "
+format = <label> <ramp-coreload>
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #f90000
-label = %percentage%%
+label = CPU: %percentage%%
+
+ramp-coreload-0 = ▁
+ramp-coreload-1 = ▂
+ramp-coreload-2 = ▃
+ramp-coreload-3 = ▄
+ramp-coreload-4 = ▅
+ramp-coreload-5 = ▆
+ramp-coreload-6 = ▇
+ramp-coreload-7 = █
+
+ramp-coreload-foreground = #55aa55
 
 [module/memory]
 type = internal/memory
@@ -265,15 +329,15 @@ format-disconnected =
 type = internal/date
 interval = 1
 
-date =
+date = " %b %d, %Y"
 date-alt = " %Y-%m-%d"
 
-time = %I:%M
+time = "%I:%M "
 time-alt = %I:%M:%S
 
 format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
+;format-underline = #0a6cf5
 
 label = %date% %time%
 
