@@ -100,7 +100,8 @@ confs ()
 	cp -R .config/termite ~/.config/
 	cp -R .config/ranger ~/.config/
 	cp -R .config/.vimrc ~/
-	cp .config/wall.jpg ~/.config/
+	wget https://raw.githubusercontent.com/TeenCorn/UbuntuMini_i3wm/master/wall.jpg
+	mv wall.jpg ~/.config/
 	cd .. && rm -rf UbuntuMini_i3wm/
 }
 
