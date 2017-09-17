@@ -98,7 +98,6 @@ confs ()
 	cp -R .config/.ncmpcpp/ ~/.config/
 	cp -R .config/polybar/ ~/.config/
 	cp -R .config/termite ~/.config/
-	cp -R .config/termite2 ~/.config/
 	cp -R .config/ranger ~/.config/
 	cp -R .config/.vimrc ~/
 	cd .. && rm -rf UbuntuMini_i3wm/
