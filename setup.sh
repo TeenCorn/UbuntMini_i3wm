@@ -7,7 +7,7 @@ basic_programs ()
 {
 	cd ~/
 	sudo apt update -qq
-	sudo apt install -yy -q xorg vim rofi feh compton pulseaudio pasystray pavucontrol firefox scrot ranger thunar ubuntu-restricted-extras git software-properties-common w3m mpv build-essential cmake automake checkinstall lxappearance gtk-chtheme qt4-qtconfig network-manager redshift-gtk alarm-clock-applet mpd mpc ncmpcpp zip gdebi htop fonts-takao xbacklight
+	sudo apt install -yy -q xorg vim rofi feh compton pulseaudio pasystray pavucontrol firefox scrot ranger thunar ubuntu-restricted-extras git software-properties-common w3m mpv build-essential cmake automake checkinstall lxappearance gtk-chtheme qt4-qtconfig network-manager redshift-gtk alarm-clock-applet mpd mpc ncmpcpp zip gdebi htop fonts-takao xbacklight fcitx-mozc fcitx-libpinyin
 }
 
 ## Prompts the user if they would like to delete flash, mainly due to security concerns, after downloading all the basic programs.
