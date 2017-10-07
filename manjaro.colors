@@ -5,3 +5,31 @@ client.urgent		 #CB4B16 #FDF6E3  #16A085  #268BD2
 client.placeholder 	 #000000 ##0c0c0c #ffffff  #000000 #0c0c0c
 
 client.background	#2B2C2B
+
+bar {
+	status_command i3status
+	position bottom
+
+## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
+#	tray_output primary
+#	tray_output eDP1
+
+	bindsym button4 nop
+	bindsym button5 nop
+	font xft:Noto Sans 10.5
+	strip_workspace_numbers yes
+
+	colors {
+#       background $transparent
+        background $i3_background
+        statusline $i3_text
+        separator  $i3_separator
+
+#                                  border  backgr. text
+        focused_workspace   $i3_color1  $i3_color4  $i3_text
+        active_workspace    $i3_color2  $i3_color3  $i3_color5
+        inactive_workspace  $i3_color2  $i3_color3  $i3_color6
+        urgent_workspace    $i3_color4  $i3_color5  $i3_color7
+    }
+}
+
