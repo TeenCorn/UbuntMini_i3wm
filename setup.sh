@@ -44,11 +44,11 @@ i3_install ()
 	sudo apt install -yy i3
 
 	#Install i3-gaps && it's dependencies
-	sudo apt install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf libxcb-xrm-dev
+	sudo apt install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf libxcb-xrm-dev -yy
 
 	sudo add-apt-repository ppa:aguignard/ppa
 	sudo apt update
-	sudo apt-get install libxcb-xrm-dev
+	sudo apt-get install libxcb-xrm-dev -yy
 
 	cd
 	git clone https://www.github.com/Airblader/i3 i3-gaps
