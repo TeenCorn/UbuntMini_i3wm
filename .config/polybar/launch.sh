@@ -4,7 +4,7 @@ killall -q polybar
 
 while pgrep -x polybar >/dev/null; do sleep 1; done
 
-polybar example &
-polybar bar2 &
+polybar bar0 &
+polybar bar1 &
 
 echo "Bars launched... ""
