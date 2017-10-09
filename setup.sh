@@ -63,7 +63,7 @@ i3_install ()
 	#Using checkinstall instead of make
 	../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
 	make
-	sudo checkinstall
+	sudo make install
 }
 
 ## I don't need all the python packages here. Haven't figured out which ones I don't need.
