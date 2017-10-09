@@ -50,6 +50,8 @@ i3_install ()
 	sudo apt update
 	sudo apt-get install libxcb-xrm-dev -yy
 
+	sudo apt upgrade
+
 	cd
 	git clone https://www.github.com/Airblader/i3 i3-gaps
 	cd i3-gaps
