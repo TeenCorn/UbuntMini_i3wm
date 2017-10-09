@@ -60,7 +60,6 @@ i3_install ()
 	rm -rf build/
 	mkdir -p build && cd build/
 
-	#Using checkinstall instead of make
 	../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
 	make
 	sudo make install
