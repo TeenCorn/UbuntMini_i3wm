@@ -10,9 +10,9 @@ basic_programs ()
 	sudo apt install -yy -q xorg vim rofi feh compton pulseaudio pavucontrol firefox scrot ranger thunar ubuntu-restricted-extras git software-properties-common w3m build-essential cmake automake checkinstall lxappearance gtk-chtheme qt4-qtconfig network-manager redshift alarm-clock-applet mpd mpc ncmpcpp zip gdebi htop fonts-takao xbacklight fcitx-mozc fcitx-libpinyin notify-osd
 
 	#Installing the latest mpv
-	sudo add-apt-repository ppa:mc3man/mpv-tests
-	sudo apt update
-	sudo apt install mpv
+	sudo add-apt-repository ppa:mc3man/mpv-tests -y
+	sudo apt update -yy
+	sudo apt install mpv -yy
 }
 
 ## Prompts the user if they would like to delete flash, mainly due to security concerns, after downloading all the basic programs.
@@ -46,11 +46,11 @@ i3_install ()
 	#Install i3-gaps && it's dependencies
 	sudo apt install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf libxcb-xrm-dev -yy
 
-	sudo add-apt-repository ppa:aguignard/ppa
-	sudo apt update
+	sudo add-apt-repository ppa:aguignard/ppa -y
+	sudo apt update -y
 	sudo apt-get install libxcb-xrm-dev -yy
 
-	sudo apt upgrade
+	sudo apt upgrade -yy
 
 	cd
 	git clone https://www.github.com/Airblader/i3 i3-gaps
