@@ -7,7 +7,7 @@ basic_programs ()
 {
 	cd ~/
 	sudo apt update -qq
-	sudo apt install -yy -q xorg vim rofi feh compton pulseaudio pavucontrol firefox scrot ranger thunar ubuntu-restricted-extras git software-properties-common w3m build-essential cmake automake checkinstall lxappearance gtk-chtheme qt4-qtconfig network-manager redshift alarm-clock-applet mpd mpc ncmpcpp zip gdebi htop fonts-takao xbacklight fcitx-mozc fcitx-libpinyin notify-osd
+	sudo apt install -yy -q xorg vim rofi feh compton pulseaudio pavucontrol firefox scrot ranger thunar ubuntu-restricted-extras git software-properties-common w3m build-essential cmake automake checkinstall lxappearance gtk-chtheme qt4-qtconfig network-manager redshift alarm-clock-applet mpd mpc ncmpcpp zip gdebi htop fonts-takao xbacklight fcitx fcitx-mozc fcitx-libpinyin notify-osd xdotool wmctrl
 
 	#Installing the latest mpv
 	sudo add-apt-repository ppa:mc3man/mpv-tests -y
