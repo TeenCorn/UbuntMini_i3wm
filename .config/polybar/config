@@ -27,10 +27,11 @@ alert = #bd2c40
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
 height = 35
-;offset-x = 1%
-;offset-y = 1%
+offset-x = 0
+offset-y = 3
 radius = 0.0
 fixed-center = true
+;override-redirect = true
 
 background = ${colors.black}
 background-0 = ${colors.background}
@@ -53,7 +54,7 @@ line-color = #f00
 border-size = 0
 border-color = #00000000
 
-padding-left = 0
+padding-left = 2
 padding-right = 2
 
 module-margin-left = 1
@@ -67,14 +68,10 @@ font-4 = "TakaoGothic:pixelsize=12;0"
 font-5 = "Material-Design-Iconic-Font:pixelsize=14;0"
 font-6 = "Terminess:pixelsize=14;0"
 
-modules-left = mpd
+modules-left = pavolume mpd mpd2
 modules-center = xwindow
 modules-right = filesystem date battery0 
 
-tray-position = left
-tray-padding = 0
-tray-transparent = false
-tray-background = ${colors.background}
 
 ;wm-restack = bspwm
 ;wm-restack = i3
@@ -96,6 +93,7 @@ height = 27
 radius = 0.0
 fixed-center = true
 bottom = true
+;override-redirect = true
 
 background = ${colors.background}
 foreground = ${colors.white}
@@ -117,9 +115,11 @@ font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 font-3 = FontAwesome:pixelsize=14;0
 font-4 = TakaoGothic:pixelsize=12;0
+font-5 = "Material-Design-Iconic-Font:pixelsize=14;0"
+font-6 = "Terminess:pixelsize=14;0"
 
 modules-left = i3 xbacklight
-modules-center = pavolume mpd2
+modules-center = 
 modules-right = cpu memory battery1
 
 ;wm-restack = bspwm
@@ -132,7 +132,12 @@ modules-right = cpu memory battery1
 
 ;scroll-up = i3wm-wsnext
 ;scroll-down = i3wm-wsprev
-
+tray-position = center
+;tray-offset-x = 0
+;tray-offset-y = -20
+tray-padding = 0
+tray-transparent = false
+tray-background = ${colors.background}
 
 [module/xwindow]
 type = internal/xwindow
@@ -163,7 +168,11 @@ mount-0 = /
 
 fixed-values = true
 
-label-mounted = "   Disk:%used% "
+label-mounted = "  Disk:%used% "
+label-mounted-font = 5
+label-mounted-underline = #60eaa5
+label-mounted-overline = #60eaa5
+
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.grey}
 
@@ -205,14 +214,25 @@ label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
 label-focused = %name%
+label-focused-foreground = #fff
 label-focused-background = ${colors.puke}
-label-focused-underline = ${colors.puke}
-label-focused-padding = ${module/bspwm.label-focused-padding}
+label-focused-overline = #60eaa5
+label-focused-underline = #60eaa5
+
+label-focused-padding = 2
+label-focused-margin = 1
+;label-focused-background = ${colors.puke}
+;label-focused-underline = ${colors.puke}
+;label-focused-padding = ${module/bspwm.label-focused-padding}
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %name%
 label-unfocused-padding = ${module/bspwm.label-occupied-padding}
-
+label-unfocused-background = ${colors.grey}
+label-unfocused-foreground = #dd222222
+;label-unfocused-overline = #c5c5c5
+;label-unfocused-underline = #c5c5c5
+label-unfocused-margin = 1
 ; visible = Active workspace on unfocused monitor
 label-visible = %name%
 label-visible-background = ${self.label-focused-background}
@@ -259,6 +279,7 @@ port = 6601
 
 format-online-font = 1
 format-online = 𝅘𝅥𝅮 <label-time>  <bar-progress> 
+;format-online-offset = 65
 ;format-playing = ${self.format-online}
 ;format-pause = ${self.format-online}
 ;format-stopped = ${self.format-online}
@@ -271,10 +292,19 @@ icon-play = 
 icon-pause = 
 icon-next = 
 
-bar-progress-width = 45
-bar-progress-indicator = |
-bar-progress-fill = ─
-bar-progress-empty = ─
+;bar-progress-width = 45
+;bar-progress-indicator = |
+;bar-progress-fill = ─
+;bar-progress-empty = ─
+bar-progress-width = 10
+bar-progress-indicator = ▇
+bar-progress-indicator-foreground = #bb
+bar-progress-fill = ▇
+bar-progress-fill-foreground = #55aa55
+bar-progress-fill-font = 3
+bar-progress-empty = ▇
+bar-progress-empty-foreground = #44
+bar-progress-empty-font = 3
 
 label-song-maxlen = 70
 label-song-ellipsis = true
@@ -284,6 +314,7 @@ type = internal/xbacklight
 
 format = <label>
 label = BL: %percentage%%
+label-font = 5
 
 bar-width = 10
 bar-indicator = |
@@ -307,6 +338,7 @@ interval = 2
 format = <label> <ramp-coreload>
 format-prefix-foreground = ${colors.grey}
 label = CPU: %percentage%%
+label-font = 5
 
 ramp-coreload-0 = ▁
 ramp-coreload-1 = ▂
@@ -324,6 +356,7 @@ type = internal/memory
 interval = 1
 format = <label> <bar-used>
 label = RAM[%gb_used%]
+label-font = 5
 
 bar-used-indicator =
 bar-used-width = 8
@@ -386,12 +419,16 @@ time-alt =  %I:%M:%S
 format-prefix = " "
 format-prefix-foreground = ${colors.white}
 format-prefix-background = ${colors.pink}
+format-prefix-underline = #e58de6
+format-prefix-overline = #e58de6
 #format-foreground = ${colors.grey}
 
 #format-background = ${colors.white}
 label-font = 6
 label = %date% %time%
 label-background = ${colors.pink}
+label-underline = #e58de6
+label-overline = #e58de6
 
 [module/volume]
 type = internal/volume
@@ -427,14 +464,17 @@ battery = BAT0
 adapter = AC
 full-at = 98
 
+format-charging-padding = 1
 format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
-format-charging-overline = #ffb52a
-format-charging-background = ${colors.puke}
+format-charging-underline = #ff63a5
+format-charging-overline = #ff63a5
+format-charging-background = #ff4279 
 
+format-discharging-padding = 1
 format-discharging = <ramp-capacity> 
-format-discharging-underline = ${self.format-charging-underline}
-format-discharging-background = ${colors.blue}
+format-discharging-underline = #ff63a5
+format-discharging-overline = #ff63a5
+format-discharging-background = #ff4279
 
 format-full-prefix = " "
 format-full-prefix-foreground = ${colors.grey}
@@ -536,6 +576,12 @@ menu-2-1-exec = menu-open-0
 type = custom/script
 tail = true
 label = %output%
+format = <label>
+format-background = #000000
+format-padding = 2
+format-overline = ${colors.grey}
+format-underline = ${colors.grey}
+;format-offset = 700
 exec = ~/.config/polybar/pavolume.sh --listen
 click-right = exec pavucontrol
 click-left = ~/.config/polybar/pavolume.sh --togmute
