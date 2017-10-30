@@ -36,7 +36,7 @@ flash_delete ()
 i3_install ()
 {
 	clear
-	## This chuck gets the lastest stable version of i3wm on ubuntu. Because that's the only way bumblebee-status will work tehe
+	## This chuck gets the lastest stable version of i3wm on ubuntu.
 	sudo /usr/lib/apt/apt-helper download-file http://debian.sur5r.net/i3/pool/main/s/sur5r-keyring/sur5r-keyring_2017.01.02_all.deb keyring.deb SHA256:4c3c6685b1181d83efe3a479c5ae38a2a44e23add55e16a328b8c8560bf05e5f
 	sudo apt install ./keyring.deb
 	sudo su -c "echo 'deb http://debian.sur5r.net/i3/ $(grep '^DISTRIB_CODENAME=' /etc/lsb-release | cut -f2 -d=) universe' >> /etc/apt/sources.list.d/sur5r-i3.list"
@@ -78,13 +78,6 @@ git_stuff ()
 {
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim	## Vim plugins
 	
-	git clone https://github.com/FortAwesome/Font-Awesome	## Installing FontAwesome and powerline fonts
-	git clone https://github.com/powerline/fonts
-	mkdir .fonts
-	cp ~/Font-Awesome/fonts/FontAwesome.otf ~/.fonts/
-	cp ~/fonts/DejaVuSansMono/DejaVu\ Sans\ Mono\ for\ Powerline.ttf ~/.fonts/
-	cp ~/fonts/Inconsolata/Inconsolata\ for\ Powerline.otf ~/.fonts/
-	rm -rf Font-Awesome fonts
 }
 
 ## Downloads my terminal emulator termite
@@ -126,6 +119,7 @@ confs ()
 	cp -R .config/termite ~/.config/
 	cp -R .config/ranger ~/.config/
 	cp -R .config/.vimrc ~/
+	cp -R .fonts/ ~/
 	wget https://raw.githubusercontent.com/TeenCorn/UbuntuMini_i3wm/master/wall.jpg
 	mv wall.jpg ~/.config/
 	cd .. && rm -rf UbuntuMini_i3wm/
