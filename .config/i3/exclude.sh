@@ -19,6 +19,7 @@ then
 		then
 			break
 		fi
+		sleep 1
 	done
 
 	#Restart compton
