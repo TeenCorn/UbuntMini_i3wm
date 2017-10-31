@@ -155,11 +155,11 @@ export LESS=-r
 
 ## Plugins section: Enable fish style features
 # Use syntax highlighting
-source /home/teencorn/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /home/$USER/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Use history substring search
-source /home/teencorn/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
+source /home/$USER/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
 # Vim mode plugin
-source /home/teencorn/.zsh/zsh-vi-mode/vi-mode.zsh
+source /home/$USER/.zsh/zsh-vi-mode/vi-mode.zsh
 # bind UP and DOWN arrow keys to history substring search
 zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up

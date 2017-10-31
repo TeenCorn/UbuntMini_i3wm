@@ -123,11 +123,11 @@ confs ()
 	cp -R .fonts/ ~/
 	cp -R .zsh/ ~/
 	cp .zshrc ~/
-	chsh -s $(which zsh)
-	zsh
 	wget https://raw.githubusercontent.com/TeenCorn/UbuntuMini_i3wm/master/wall.jpg
 	mv wall.jpg ~/.config/
 	cd .. && rm -rf UbuntuMini_i3wm/
+	chsh -s $(which zsh)
+	zsh
 }
 
 basic_programs
