@@ -109,6 +109,7 @@ polybar_install ()
 confs ()
 {
 	##Getting configs
+	cd ~/
 	git clone https://github.com/TeenCorn/UbuntuMini_i3wm.git
 	cd UbuntuMini_i3wm/
 	mkdir ~/.config
@@ -126,8 +127,6 @@ confs ()
 	wget https://raw.githubusercontent.com/TeenCorn/UbuntuMini_i3wm/master/wall.jpg
 	mv wall.jpg ~/.config/
 	cd .. && rm -rf UbuntuMini_i3wm/
-	chsh -s $(which zsh)
-	zsh
 }
 
 basic_programs
@@ -139,3 +138,4 @@ term
 polybar_install
 confs
 cd ~/ && rm setup.sh
+chsh -s $(which zsh)
