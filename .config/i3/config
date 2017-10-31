@@ -99,7 +99,7 @@ set $ws3 "3:  "
 set $ws10 "4:"
 set $ws9 "5:orn "
 set $ws8 "6:  "
-set $term terminology 
+set $term termite 
 set $dummy $term --name=dummy -e
 
 ##switch to workspace
@@ -196,8 +196,8 @@ set $auto exec ~/.config/i3/auto.sh
 bindsym $mod+Return exec $term				 		#Starts a terminal
 bindsym $mod+q workspace $ws2; exec qutebrowser					#Starts qutebrowser
 bindsym $mod+g workspace $ws3; exec gimp					#starts gimp
-#bindsym $mod+r exec --no-startup-id $term -c ~/.config/ranger/config --name=ranger -e ranger; exec sleep 1; exec $term --name=dummy -e ~/.config/i3/exclude.sh 	#starts ranger
-bindsym $mod+r exec --no-startup-id $term --name=ranger -e ranger
+bindsym $mod+r exec --no-startup-id $term -c ~/.config/ranger/config --name=ranger -e ranger; exec sleep 1; exec $term --name=dummy -e ~/.config/i3/exclude.sh 	#starts ranger
+#bindsym $mod+r exec --no-startup-id $term --name=ranger -e ranger
 bindsym $mod+e exec thunar							#starts thunar
 bindsym $mod+Shift+f workspace $ws2; exec firefox				#starts firefox
 bindsym $mod+v workspace $ws3; exec $term -e vim			#starts vim
@@ -207,7 +207,7 @@ bindsym $mod+semicolon exec $term --name=htop --config=/home/teencorn/.config/te
 bindsym $mod+F12 exec $term --name=ncmpcpp -e ncmpcpp
 bindsym $mod+w exec $term --name=w3m -e "w3m -B"
 bindsym $sup+m workspace $ws1; exec $term --name=youtube -e mpsyt
-bindsym $sup+r exec redshift -O 3600
+bindsym $sup+r exec redshift -O 3200
 bindsym $sup+Shift+r exec redshift -x
 bindsym $sup+c exec fcitx -o Pinyin
 #bindsym $sup+Return exec $dummy ~/.config/i3/auto.sh
