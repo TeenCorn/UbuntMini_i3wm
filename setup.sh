@@ -7,7 +7,7 @@ basic_programs ()
 {
 	cd ~/
 	sudo apt update -qq
-	sudo apt install -yy -q xorg vim rofi feh compton pulseaudio pavucontrol firefox scrot ranger thunar ubuntu-restricted-extras git software-properties-common w3m build-essential cmake automake checkinstall lxappearance gtk-chtheme qt4-qtconfig network-manager redshift alarm-clock-applet mpd mpc ncmpcpp zip gdebi htop fonts-takao xbacklight fcitx fcitx-mozc fcitx-libpinyin notify-osd xdotool wmctrl wine imagemagick
+	sudo apt install -yy -q xorg vim rofi feh compton pulseaudio pavucontrol firefox scrot ranger thunar ubuntu-restricted-extras git software-properties-common w3m build-essential cmake automake checkinstall lxappearance gtk-chtheme qt4-qtconfig network-manager redshift alarm-clock-applet mpd mpc ncmpcpp zip gdebi htop fonts-takao xbacklight fcitx fcitx-mozc fcitx-libpinyin notify-osd xdotool wmctrl wine imagemagick zsh
 
 	#Installing the latest mpv
 	sudo add-apt-repository ppa:mc3man/mpv-tests -y
@@ -121,6 +121,10 @@ confs ()
 	cp -R .config/ranger ~/.config/
 	cp -R .config/.vimrc ~/
 	cp -R .fonts/ ~/
+	cp -R .zsh/ ~/
+	cp .zshrc ~/
+	chsh -s $(which zsh)
+	zsh
 	wget https://raw.githubusercontent.com/TeenCorn/UbuntuMini_i3wm/master/wall.jpg
 	mv wall.jpg ~/.config/
 	cd .. && rm -rf UbuntuMini_i3wm/
