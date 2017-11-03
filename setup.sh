@@ -7,7 +7,7 @@ basic_programs ()
 {
 	cd ~/
 	sudo apt update -qq
-	sudo apt install -yy -q xorg vim rofi feh compton pulseaudio pavucontrol firefox scrot ranger thunar ubuntu-restricted-extras git software-properties-common w3m build-essential cmake automake checkinstall lxappearance gtk-chtheme qt4-qtconfig network-manager redshift alarm-clock-applet mpd mpc ncmpcpp zip gdebi htop fonts-takao xbacklight fcitx fcitx-mozc fcitx-libpinyin notify-osd xdotool wmctrl wine imagemagick zsh language-pack-zh-hant language-pack-zh-hans language-pack-ja
+	sudo apt install -yy -q xorg vim rofi feh compton pulseaudio pavucontrol firefox scrot ranger thunar ubuntu-restricted-extras git software-properties-common w3m build-essential cmake automake checkinstall lxappearance gtk-chtheme qt4-qtconfig network-manager redshift alarm-clock-applet mpd mpc ncmpcpp zip gdebi htop fonts-takao xbacklight notify-osd xdotool wmctrl wine imagemagick zsh language-pack-gnome-zh-hant language-pack-gnome-zh-hans language-pack-gnome-ja fcitx fcitx-mozc fcitx-libpinyin fcitx-ui-light fcitx-libpinyin fcitx-sunpinyin
 
 	#Installing the latest mpv
 	sudo add-apt-repository ppa:mc3man/mpv-tests -y
@@ -128,6 +128,8 @@ confs ()
 	wget https://raw.githubusercontent.com/TeenCorn/UbuntuMini_i3wm/master/wall.jpg
 	mv wall.jpg ~/.config/
 	cd .. && rm -rf UbuntuMini_i3wm/
+
+	vim +PluginInstall +qall
 }
 
 basic_programs
@@ -140,3 +142,11 @@ polybar_install
 confs
 cd ~/ && rm setup.sh
 chsh -s $(which zsh)
+
+clear
+echo "Want to reboot? y/n: "
+read option
+if [[ $option == "y" ]]
+then
+	sudo reboot
+fi
