@@ -124,6 +124,7 @@ confs ()
 	cp -R .fonts/ ~/
 	cp -R .zsh/ ~/
 	cp .zshrc ~/
+	cp .zprofile ~/
 	cp .profile ~/
 	wget https://raw.githubusercontent.com/TeenCorn/UbuntuMini_i3wm/master/wall.jpg
 	mv wall.jpg ~/.config/
