@@ -7,7 +7,7 @@ basic_programs ()
 {
 	cd ~/
 	sudo apt update -qq
-	sudo apt install -yy -q xorg vim rofi feh compton pulseaudio pavucontrol firefox scrot ranger thunar ubuntu-restricted-extras git software-properties-common w3m build-essential cmake automake checkinstall lxappearance gtk-chtheme qt4-qtconfig network-manager redshift alarm-clock-applet mpd mpc ncmpcpp zip gdebi htop fonts-takao xbacklight notify-osd xdotool wmctrl wine imagemagick zsh language-pack-gnome-zh-hant language-pack-gnome-zh-hans language-pack-gnome-ja fcitx
+	sudo apt install -yy -q xorg vim rofi feh compton pulseaudio pavucontrol firefox scrot ranger thunar ubuntu-restricted-extras git software-properties-common w3m build-essential cmake automake checkinstall lxappearance gtk-chtheme qt4-qtconfig network-manager redshift alarm-clock-applet mpd mpc ncmpcpp zip gdebi htop fonts-takao xbacklight notify-osd xdotool wmctrl wine imagemagick zsh language-pack-zh-hant language-pack-zh-hans language-pack-ja fcitx
 
 	#Installing the latest mpv
 	sudo add-apt-repository ppa:mc3man/mpv-tests -y
@@ -141,6 +141,17 @@ winePro ()
 	wget --header='Host: dl-web.dropbox.com' --header='User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:56.0) Gecko/20100101 Firefox/56.0' --header='Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' --header='Accept-Language: en-US,en;q=0.5' --header='Referer: https://www.dropbox.com/' --header='Cookie: locale=en; t=rzYgk-qUudU1uE6Uv4oKy0io; _ga=GA1.2.350055373.1510123821; blid=AABhIx8kX-zQii2Sibyf1tJ48mfpcfzULgmzJDpjo0tsug; bjar=W3sidWlkIjogNzE1MDAxMjg3LCAic2Vzc19pZCI6IDkyNzY3MTUzMjgyNjQ5Mjg5NjMzOTE1OTQ5NTUyNTMxMTM2NzQ3LCAiZXhwaXJlcyI6IDE1MTA0MzU1NzksICJ0ZWFtX2lkIjogIiIsICJyb2xlIjogInBlcnNvbmFsIn1d; last_active_role=personal' --header='Connection: keep-alive' --header='Upgrade-Insecure-Requests: 1' 'https://dl-web.dropbox.com/get/i3wm_Stuff/FoxitReader90_enu_Setup_Clean.exe?_download_id=7106491938436524493329434914874724554205174303734012627366031487841&_notify_domain=www.dropbox.com&_subject_uid=715001287&dl=1&w=AAA0sdGSkWo8HddZRCfJucZsyvaA7zTeoEGu2_NTQ-Bmrw' -O 'FoxitReader90_enu_Setup_Clean.exe' -c
 }
 
+re ()
+{
+	clear
+	echo "Want to reboot? y/n: "
+	read option
+	if [[ $option == "y" ]]
+	then
+		sudo reboot
+	fi
+}
+
 basic_programs
 flash_delete
 i3_install
@@ -149,14 +160,7 @@ git_stuff
 term
 polybar_install
 confs
-wine
+winePro
 cd ~/ && rm setup.sh
 chsh -s $(which zsh)
-
-clear
-echo "Want to reboot? y/n: "
-read option
-if [[ $option == "y" ]]
-then
-	sudo reboot
-fi
+re
