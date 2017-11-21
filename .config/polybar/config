@@ -63,7 +63,8 @@ module-margin-right = 2
 font-0 = fixed:pixelsize=10;1
 font-1 = "unifont:fontformat=truetype:size=8:antialias=false;0"
 font-2 = "TakaoGothic:pixelsize=12;0"
-font-3 = "TerminessTTF\ Nerd\ Font\ Mono:pixelsize=14;0"
+font-3 = "TerminessTTF\ Nerd\ Font:pixelsize=14;0"
+font-4 = "FontAwesome:pixelsize=14;0"
 
 modules-left = pavolume mpd mpd2
 modules-center = xwindow
@@ -110,7 +111,8 @@ module-margin-right = 2
 font-0 = fixed:pixelsize=10;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = TakaoGothic:pixelsize=12;0
-font-3 = "TerminessTTF\ Nerd\ Font\ Mono:pixelsize=14;0"
+font-3 = "TerminessTTF\ Nerd\ Font:pixelsize=14;0"
+font-4 = "FontAwesome:pixelsize=14;0"
 
 modules-left = i3 xbacklight
 modules-center = 
@@ -207,6 +209,7 @@ label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
+label-focused-font = 5
 label-focused = %name%
 label-focused-foreground = #fff
 label-focused-background = ${colors.puke}
@@ -220,20 +223,23 @@ label-focused-margin = 1
 ;label-focused-padding = ${module/bspwm.label-focused-padding}
 
 ; unfocused = Inactive workspace on any monitor
+label-unfocused-font = 5
 label-unfocused = %name%
-label-unfocused-padding = ${module/bspwm.label-occupied-padding}
+label-unfocused-padding = 2
 label-unfocused-background = ${colors.grey}
 label-unfocused-foreground = #dd222222
 ;label-unfocused-overline = #c5c5c5
 ;label-unfocused-underline = #c5c5c5
 label-unfocused-margin = 1
 ; visible = Active workspace on unfocused monitor
+label-visible-font = 5
 label-visible = %name%
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
+label-urgent-font = 5
 label-urgent = %name% !
 label-urgent-background = ${module/bspwm.label-urgent-background}
 label-urgent-padding = ${module/bspwm.label-urgent-padding}
@@ -404,13 +410,14 @@ format-disconnected =
 type = internal/date
 interval = 1
 
-date = " %b %d, %Y"
-date-alt = " %Y-%m-%d"
+date = %b %d, %Y
+date-alt = %Y-%m-%d
 
-time = "  %I:%M "
-time-alt =  %I:%M:%S
+time = "  %I:%M"
+time-alt = "  %I:%M:%S"
 
 format-prefix = " "
+format-prefix-padding = 1
 format-prefix-foreground = ${colors.white}
 format-prefix-background = ${colors.pink}
 format-prefix-underline = #e58de6
@@ -420,6 +427,7 @@ format-prefix-overline = #e58de6
 #format-background = ${colors.white}
 label-font = 3
 label = %date% %time%
+label-padding = 2
 label-background = ${colors.pink}
 label-underline = #e58de6
 label-overline = #e58de6
@@ -458,6 +466,8 @@ battery = BAT0
 adapter = AC
 full-at = 98
 
+format-font = 5
+
 format-charging-padding = 1
 format-charging = <animation-charging> <label-charging>
 format-charging-underline = #ff63a5
@@ -470,10 +480,12 @@ format-discharging-underline = #ff63a5
 format-discharging-overline = #ff63a5
 format-discharging-background = #ff4279
 
-format-full-prefix = " "
+format-full-font = 5
+format-full-prefix = ""
 format-full-prefix-foreground = ${colors.grey}
 format-full-underline = ${self.format-charging-underline}
 
+ramp-capacity-font = 5
 ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
@@ -481,6 +493,7 @@ ramp-capacity-3 = 
 ramp-capacity-4 = 
 ramp-capacity-foreground = ${colors.grey}
 
+animation-charging-font = 5
 animation-charging-0 = 
 animation-charging-1 = 
 animation-charging-2 = 
