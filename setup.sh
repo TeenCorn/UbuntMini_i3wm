@@ -152,7 +152,6 @@ git_stuff
 term
 polybar_install
 confs
-winePro
 cd ~/ && rm setup.sh
 chsh -s $(which zsh)
 re
