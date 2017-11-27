@@ -131,6 +131,7 @@ confs ()
 	cd .. && rm -rf UbuntuMini_i3wm/
 
 	vim +PluginInstall +qall
+	sudo apt purge --auto-remove dunst
 }
 
 re ()
