@@ -7,7 +7,8 @@ basic_programs ()
 {
 	cd ~/
 	sudo apt update -qq
-	sudo apt install -yy -q xorg vim rofi feh compton pulseaudio pavucontrol firefox scrot ranger thunar ubuntu-restricted-extras git software-properties-common w3m build-essential cmake automake checkinstall lxappearance gtk-chtheme qt4-qtconfig network-manager redshift alarm-clock-applet mpd mpc ncmpcpp zip gdebi htop fonts-takao xbacklight notify-osd xdotool wmctrl wine imagemagick zsh language-pack-zh-hant language-pack-zh-hans language-pack-ja fcitx clang
+	## Pending: Anki, arc-theme, texlive
+	sudo apt install -yy -q xorg vim rofi feh compton pulseaudio pavucontrol firefox ranger thunar ubuntu-restricted-extras git software-properties-common w3m build-essential cmake automake checkinstall lxappearance gtk-chtheme qt4-qtconfig network-manager redshift alarm-clock-applet mpd mpc ncmpcpp zip gdebi htop fonts-takao xbacklight notify-osd xdotool wmctrl wine imagemagick zsh language-pack-zh-hant language-pack-zh-hans language-pack-ja fcitx clang libreoffice libreoffice-gtk pulseaudio-module-bluetooth bluez caca-utils highlight pandoc mediainfo acestream-engine openvpn rxvt-unicode-256color texlive
 
 	#Installing the latest mpv
 	sudo add-apt-repository ppa:mc3man/mpv-tests -y
@@ -27,7 +28,7 @@ flash_delete ()
 	then
 		sudo apt purge --auto-remove flashplugin-installer -yy
 	fi
-	
+
 	sudo apt -yy install gstreamer1.0-plugins-{base,good,bad,ugly} gstreamer1.0-libav ## Getting a youtube videos to work without flash
 
 }
@@ -42,7 +43,7 @@ i3_install ()
 	sudo apt install ./keyring.deb
 	sudo su -c "echo 'deb http://debian.sur5r.net/i3/ $(grep '^DISTRIB_CODENAME=' /etc/lsb-release | cut -f2 -d=) universe' >> /etc/apt/sources.list.d/sur5r-i3.list"
 	sudo apt update -qq
-	sudo apt install -yy i3
+	sudo apt install -yy i3-wm
 
 	#Install i3-gaps && it's dependencies
 	sudo apt install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf libxcb-xrm-dev -yy
@@ -78,7 +79,8 @@ python_stuff ()
 git_stuff ()
 {
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim	## Vim plugins
-	
+	curl -L git.io/antigen > .antigen
+
 }
 
 ## Downloads my terminal emulator termite
@@ -97,7 +99,7 @@ polybar_install ()
 {
 	cd ~/
 	sudo apt install cmake cmake-data libcairo2-dev libxcb1-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-image0-dev libxcb-randr0-dev libxcb-util0-dev libxcb-xkb-dev pkg-config python-xcbgen xcb-proto libxcb-xrm-dev i3-wm libasound2-dev libmpdclient-dev libiw-dev libcurl4-openssl-dev -yy
-	
+
 	git clone --branch 3.0.5 --recursive https://github.com/jaagr/polybar
 	mkdir polybar/build
 	cd polybar/build
@@ -122,7 +124,8 @@ confs ()
 	cp -R .config/ranger ~/.config/
 	cp -R .config/.vimrc ~/
 	cp -R .fonts/ ~/
-	cp -R .zsh/ ~/
+#	cp -R .zsh/ ~/
+	cp .Xresources ~/
 	cp .zshrc ~/
 	cp .zprofile ~/
 	cp .profile ~/
@@ -131,6 +134,7 @@ confs ()
 	cd .. && rm -rf UbuntuMini_i3wm/
 
 	vim +PluginInstall +qall
+	xrdb .Xresources
 	sudo apt purge --auto-remove dunst
 }
 

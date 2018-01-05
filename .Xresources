@@ -1,0 +1,88 @@
+XTerm*faceName: TerminessTTF Nerd Font
+xterm*faceSize: 12
+xterm*vt100*geometry: 80x60
+xterm*saveLines: 16384
+xterm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
+xterm*termName: term-256color
+xterm*eightBitInput: false
+
+! special
+XTerm*.foreground:   #eceff1
+XTerm*.background:   #161616
+XTerm*.cursorColor:  #eceff1
+
+! black
+XTerm*.color0:       #263238
+XTerm*.color8:       #37474f
+
+! red
+XTerm*.color1:       #ff9800
+XTerm*.color9:       #ffa74d
+
+! green
+XTerm*.color2:       #8bc34a
+XTerm*.color10:      #9ccc65
+
+! yellow
+XTerm*.color3:       #ffc107
+XTerm*.color11:      #ffa000
+
+! blue
+XTerm*.color4:       #03a9f4
+XTerm*.color12:      #81d4fa
+
+! magenta
+XTerm*.color5:       #e91e63
+XTerm*.color13:      #ad1457
+
+! cyan
+XTerm*.color6:       #009688
+XTerm*.color14:      #26a69a
+
+! white
+XTerm*.color7:       #cfd8dc
+XTerm*.color15:      #eceff1
+
+! special
+URxvt*.foreground:   #eceff1
+URxvt*.background:   #263238
+URxvt*.cursorColor:  #eceff1
+
+! black
+URxvt*.color0:       #263238
+URxvt*.color8:       #37474f
+
+! red
+URxvt*.color1:       #ff9800
+URxvt*.color9:       #ffa74d
+
+! green
+URxvt*.color2:       #8bc34a
+URxvt*.color10:      #9ccc65
+
+! yellow
+URxvt*.color3:       #ffc107
+URxvt*.color11:      #ffa000
+
+! blue
+URxvt*.color4:       #03a9f4
+URxvt*.color12:      #81d4fa
+
+! magenta
+URxvt*.color5:       #e91e63
+URxvt*.color13:      #ad1457
+
+! cyan
+URxvt*.color6:       #009688
+URxvt*.color14:      #26a69a
+
+! white
+URxvt*.color7:       #cfd8dc
+URxvt*.color15:      #eceff1
+
+URxvt*scrollBar: false
+
+URxvt*transparent: true
+URxvt*shading: 60
+
+URxvt*font: xft:TerminessTTF Nerd Font Mono:size=16
