@@ -157,7 +157,7 @@ bindsym $mod+Shift+e exec i3-msg exit
 
 #i3wm_STARTUP_APPS
 exec_always --no-startup-id feh --bg-scale ~/.config/wall.jpg			#Applies background to desktop
-exec --no-startup-id compton -f -i 0.5 --active-opacity 1.0		#Transparency and effects
+exec --no-startup-id compton 						#Transparency and effects
 exec --no-startup-id nm-applet						# Puts nm icon in corner
 exec --no-startup-id mpd						#Music player daemon
 exec --no-startup-id $term --name=dropdown 				#Dropdown term
@@ -172,10 +172,10 @@ bindsym $mod+Shift+BackSpace exec killall mpd; exec systemctl reboot 			#Reboots
 bindsym $mod+BackSpace exec .config/i3/lock.sh 				#Locks and suspends
 
 ##Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute 1 toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle # mute sound
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute 2 toggle
 
 #MEDIA_KEYS
 bindsym XF86AudioPlay exec playerctl play
@@ -197,14 +197,14 @@ set $auto exec ~/.config/i3/auto.sh
 bindsym $mod+Return exec $term				 		#Starts a terminal
 bindsym $mod+q workspace $ws2; exec qutebrowser					#Starts qutebrowser
 bindsym $mod+g workspace $ws3; exec gimp					#starts gimp
-bindsym $mod+r exec --no-startup-id $term -c ~/.config/ranger/config --name=ranger -e ranger; exec sleep 1; exec $term --name=dummy -e ~/.config/i3/exclude.sh 	#starts ranger
-#bindsym $mod+r exec --no-startup-id $term --name=ranger -e ranger
+#bindsym $mod+r exec --no-startup-id $term --title=Ranger --name=ranger -e ranger; exec sleep 1; exec $term --name=dummy -e ~/.config/i3/exclude.sh 	#starts ranger
+bindsym $mod+r exec --no-startup-id urxvt -e ranger
 bindsym $mod+e exec thunar							#starts thunar
 bindsym $mod+Shift+f workspace $ws2; exec firefox				#starts firefox
 bindsym $mod+v workspace $ws3; exec $term -e vim			#starts vim
 bindsym $mod+Shift+s scratchpad show
 bindsym $mod+F8 exec /home/teencorn/android-studio/bin/studio.sh
-bindsym $mod+semicolon exec $term --name=htop --config=/home/teencorn/.config/termite2/config -e htop
+#bindsym $mod+semicolon exec $term --name=htop --config=/home/teencorn/.config/termite2/config -e htop
 bindsym $mod+F12 exec $term --name=ncmpcpp -e ncmpcpp
 bindsym $mod+w exec $term --name=w3m -e "w3m -B"
 bindsym $sup+m workspace $ws1; exec $term --name=youtube -e mpsyt
@@ -212,7 +212,7 @@ bindsym $sup+r exec redshift -O 3200
 bindsym $sup+Shift+r exec redshift -x
 bindsym $sup+c exec fcitx -o Pinyin
 #bindsym $sup+Return exec $dummy ~/.config/i3/auto.sh
-bindsym $sup+f exec wine .wine/drive_c/Program\ Files\ \(x86\)/Foxit\ Software/Foxit\ Reader/FoxitReader.exe 
+bindsym $sup+f exec wine .wine/drive_c/Program\ Files\ \(x86\)/Foxit\ Software/Foxit\ Reader/FoxitReader.exe
 
 ##i3wm_AUTISM#############################################################
 

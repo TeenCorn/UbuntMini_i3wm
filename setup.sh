@@ -117,8 +117,8 @@ confs ()
 	mkdir ~/.config
 	mkdir ~/.config/i3
 	cp -R .config/i3 ~/.config/
-	cp -R .config/.mpd/ ~/.config/
-	cp -R .config/.ncmpcpp/ ~/.config/
+	cp -R .config/mpd/ ~/.config/
+	cp -R .config/.ncmpcpp/ ~/
 	cp -R .config/polybar/ ~/.config/
 	cp -R .config/termite ~/.config/
 	cp -R .config/ranger ~/.config/
@@ -135,7 +135,6 @@ confs ()
 
 	vim +PluginInstall +qall
 	xrdb .Xresources
-	sudo apt purge --auto-remove dunst
 }
 
 re ()
