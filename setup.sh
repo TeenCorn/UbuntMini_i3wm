@@ -7,6 +7,10 @@ basic_programs ()
 {
 	cd ~/
 	sudo apt update -qq
+	echo 'deb http://repo.acestream.org/ubuntu/ trusty main' | sudo tee /etc/apt/sources.list.d/acestream.list
+	sudo wget -O - http://repo.acestream.org/keys/acestream.public.key | sudo apt-key add -
+	sudo apt-get update
+	sudo apt-get install acestream-engine
 	## Pending: Anki, arc-theme, texlive
 	sudo apt install -yy -q xorg vim rofi feh compton pulseaudio pavucontrol firefox ranger thunar ubuntu-restricted-extras git software-properties-common w3m build-essential cmake automake checkinstall lxappearance gtk-chtheme qt4-qtconfig network-manager redshift alarm-clock-applet mpd mpc ncmpcpp zip gdebi htop fonts-takao xbacklight notify-osd xdotool wmctrl wine imagemagick zsh language-pack-zh-hant language-pack-zh-hans language-pack-ja fcitx clang libreoffice libreoffice-gtk pulseaudio-module-bluetooth bluez caca-utils highlight pandoc mediainfo acestream-engine openvpn rxvt-unicode-256color texlive
 
