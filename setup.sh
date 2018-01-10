@@ -12,7 +12,7 @@ basic_programs ()
 	sudo apt-get update
 	sudo apt-get install acestream-engine
 	## Pending: Anki, arc-theme, texlive
-	sudo apt install -yy -q xorg vim rofi feh compton pulseaudio pavucontrol firefox ranger thunar ubuntu-restricted-extras git software-properties-common w3m build-essential cmake automake checkinstall lxappearance gtk-chtheme qt4-qtconfig network-manager redshift alarm-clock-applet mpd mpc ncmpcpp zip gdebi htop fonts-takao xbacklight notify-osd xdotool wmctrl wine imagemagick zsh language-pack-zh-hant language-pack-zh-hans language-pack-ja fcitx clang libreoffice libreoffice-gtk pulseaudio-module-bluetooth bluez caca-utils highlight pandoc mediainfo acestream-engine openvpn rxvt-unicode-256color texlive
+	sudo apt install -yy -q xorg vim rofi feh compton pulseaudio pavucontrol ranger thunar ubuntu-restricted-extras git software-properties-common w3m build-essential cmake automake checkinstall lxappearance gtk-chtheme qt4-qtconfig network-manager redshift alarm-clock-applet mpd mpc ncmpcpp zip gdebi htop fonts-takao xbacklight notify-osd xdotool wmctrl wine imagemagick zsh language-pack-zh-hant language-pack-zh-hans language-pack-ja fcitx clang libreoffice libreoffice-gtk pulseaudio-module-bluetooth bluez caca-utils highlight pandoc mediainfo acestream-engine openvpn rxvt-unicode-256color texlive curl
 
 	#Installing the latest mpv
 	sudo add-apt-repository ppa:mc3man/mpv-tests -y
@@ -47,7 +47,7 @@ i3_install ()
 	sudo apt install ./keyring.deb
 	sudo su -c "echo 'deb http://debian.sur5r.net/i3/ $(grep '^DISTRIB_CODENAME=' /etc/lsb-release | cut -f2 -d=) universe' >> /etc/apt/sources.list.d/sur5r-i3.list"
 	sudo apt update -qq
-	sudo apt install -yy i3-wm
+	sudo apt install -yy i3
 
 	#Install i3-gaps && it's dependencies
 	sudo apt install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf libxcb-xrm-dev -yy
@@ -83,8 +83,12 @@ python_stuff ()
 git_stuff ()
 {
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim	## Vim plugins
-	curl -L git.io/antigen > .antigen
+	mkdir .antigen
+	curl -L git.io/antigen > .antigen/antigen.zsh
 
+	wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-55.2.2.en-US.linux-x86_64.tar.bz2
+	tar -xjf waterfox-55.2.2.en-US.linux-x86_64.tar.bz2
+	ln -s ~/waterfox/waterfox ~/.local/bin/firefox
 }
 
 ## Downloads my terminal emulator termite
@@ -102,7 +106,7 @@ term ()
 polybar_install ()
 {
 	cd ~/
-	sudo apt install cmake cmake-data libcairo2-dev libxcb1-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-image0-dev libxcb-randr0-dev libxcb-util0-dev libxcb-xkb-dev pkg-config python-xcbgen xcb-proto libxcb-xrm-dev i3-wm libasound2-dev libmpdclient-dev libiw-dev libcurl4-openssl-dev -yy
+	sudo apt install cmake cmake-data libcairo2-dev libxcb1-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-image0-dev libxcb-randr0-dev libxcb-util0-dev libxcb-xkb-dev pkg-config python-xcbgen xcb-proto libxcb-xrm-dev libasound2-dev libmpdclient-dev libiw-dev libcurl4-openssl-dev -yy
 
 	git clone --branch 3.0.5 --recursive https://github.com/jaagr/polybar
 	mkdir polybar/build
