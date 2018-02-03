@@ -1,4 +1,4 @@
-Update Termite config; other configs as well
 Fix gtk to arc-theme
 Fix icon theme to Obsidian Icon Theme; maybe Papirus as well
-edit $PATH in /etc/environment for waterfox binary. in /home/$USER/teencorn/.local/bin
+edit $PATH in /etc/zsh/zshenv via script for waterfox binary. in /home/$USER/teencorn/.local/bin
+Switched polybar, i3, termite, zshrc, cava

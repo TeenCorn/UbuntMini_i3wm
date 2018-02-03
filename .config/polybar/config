@@ -1,122 +1,90 @@
-;=====================================================
-;
-;   To learn more about how to configure Polybar
-;   go to https://github.com/jaagr/polybar
-;
-;   The README contains alot of information
-;
-;=====================================================
+; ____       ___           __
+;/\  _`\    /\_ \         /\ \
+;\ \ \L\ \__\//\ \   __  _\ \ \
+; \ \ ,__/ __`\ \ \ /\ \/\ \ \ '__`\ /'__`\ /\`'__\
+;  \ \ \/\ \L\ \_\ \\ \ \_\ \ \ \L\ /\ \L\.\\ \ \/
+;   \ \_\ \____/\____\/`____ \ \_,__\ \__/.\_\ \_\
+;    \/_/\/___/\/____/`/___/> \/___/ \/__/\/_/\/_/
+;                        /\___/
+;                        \/__/
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #000f0f0f
+background = #800f0f0f
+background-white = #f5f5f5
 ;change back-alt to change i3 background
 background-alt = #676767
 ;foreground = ${xrdb:color7:#222}
 white = #dfdfdf
+dull_white = #707070
 grey = #555
 black = #000000
+light_black = #212121
 blue = #0a6cf5
 puke = #05C48C
 pink = #E916C0
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
+shadow-0 = #C0C3C1
 
 [bar/bar0]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
-height = 35
+height = 30
 offset-x = 0
-offset-y = 3
+offset-y = 0
 radius = 0.0
 fixed-center = true
 ;override-redirect = true
 
-background = ${colors.black}
-background-0 = ${colors.background}
-background-1 = ${colors.background}
-background-2 = ${colors.grey}
-background-3 = ${colors.grey}
-background-4 = ${colors.grey}
-background-5 = ${colors.grey}
-background-6 = ${colors.grey}
-background-7 = ${colors.grey}
-background-8 = ${colors.background}
-background-9 = ${colors.background}
+background = ${colors.background-white}
+;background-0 = ${colors.background-white}
+;background-1 = ${colors.background-white}
+;background-2 = ${colors.background-white}
+;background-3 = ${colors.background-white}
+;background-4 = ${colors.background-white}
+;background-5 = ${colors.background-white}
+;background-6 = ${colors.background-white}
+;background-7 = ${colors.background-white}
+;background-8 = ${colors.background-white}
+;background-9 = ${colors.background-white}
 
 
-foreground = ${colors.white}
+foreground = ${colors.light_black}
 
-line-size = 3
-line-color = #f00
+;line-bottom-size = 3
+;line-bottom-color = ${colors.grey}
 
-border-size = 0
-border-color = #00000000
+tray-position = right
+;tray-detatched = true
+tray-offset-y = 0
+;tray-offset-x = -390
 
-padding-left = 2
+;border-top-size = 2
+;border-bottom-size = 2
+;border-color = #C0C3C1
+
+padding-left = 3
 padding-right = 2
 
 module-margin-left = 1
-module-margin-right = 2
+module-margin-right = 1
 
 font-0 = fixed:pixelsize=10;1
 font-1 = "unifont:fontformat=truetype:size=8:antialias=false;0"
 font-2 = "TakaoGothic:pixelsize=12;0"
-font-3 = "TerminessTTF\ Nerd\ Font:pixelsize=14;0"
-font-4 = "FontAwesome:pixelsize=14;0"
+font-3 = "TerminessTTF\ Nerd\ Font:pixelsize=12;0"
+font-4 = "TerminessTTF\ Nerd\ Font\ Mono:pixelsize=12;0"
+font-5 = "TerminessTTF\ Nerd\ Font\ Mono:pixelsize=16;0"
+font-6 = "FontAwesome:pixelsize=14;0"
+font-7 = "TerminessTTF\ Nerd\ Font:pixelsize=14;0"
+font-8 = "TerminessTTF\ Nerd\ Font\ Mono:pixelsize=10;0"
 
-modules-left = pavolume mpd mpd2
-modules-center = xwindow
-modules-right = filesystem date battery0 
+modules-left = menu mpd mpd2
+modules-center = i3
+modules-right = pavolume temperature cpu memory disk date battery0 battery1
 
-
-;wm-restack = bspwm
-;wm-restack = i3
-
-;override-redirect = true
-
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
-
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
-
-[bar/bar1]
-;monitor = ${env:MONITOR:HDMI-1}
-width = 100%
-height = 27
-;offset-x = 1%
-;offset-y = 1%
-radius = 0.0
-fixed-center = true
-bottom = true
-;override-redirect = true
-
-background = ${colors.background}
-foreground = ${colors.white}
-
-line-size = 3
-line-color = #f00
-
-border-size = 0
-border-color = #00000000
-
-padding-left = 0
-padding-right = 2
-
-module-margin-left = 1
-module-margin-right = 2
-
-font-0 = fixed:pixelsize=10;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = TakaoGothic:pixelsize=12;0
-font-3 = "TerminessTTF\ Nerd\ Font:pixelsize=14;0"
-font-4 = "FontAwesome:pixelsize=14;0"
-
-modules-left = i3 xbacklight
-modules-center = 
-modules-right = cpu memory battery1
 
 ;wm-restack = bspwm
 ;wm-restack = i3
@@ -128,12 +96,59 @@ modules-right = cpu memory battery1
 
 ;scroll-up = i3wm-wsnext
 ;scroll-down = i3wm-wsprev
-tray-position = center
-;tray-offset-x = 0
-;tray-offset-y = -20
-tray-padding = 0
-tray-transparent = false
-tray-background = ${colors.background}
+
+;[bar/bar1]
+;;monitor = ${env:MONITOR:HDMI-1}
+;width = 100%
+;height = 27
+;;offset-x = 1%
+;;offset-y = 1%
+;radius = 0.0
+;fixed-center = true
+;bottom = true
+;;override-redirect = true
+;
+;background = ${colors.background}
+;foreground = ${colors.white}
+;
+;line-size = 3
+;line-color = #f00
+;
+;border-size = 0
+;border-color = #00000000
+;
+;padding-left = 0
+;padding-right = 2
+;
+;module-margin-left = 1
+;module-margin-right = 2
+;
+;font-0 = fixed:pixelsize=10;1
+;font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+;font-2 = TakaoGothic:pixelsize=12;0
+;font-3 = "TerminessTTF\ Nerd\ Font:pixelsize=14;0"
+;font-4 = "FontAwesome:pixelsize=14;0"
+;
+;modules-left = i3 xbacklight
+;modules-center =
+;modules-right = cpu memory battery1
+;
+;;wm-restack = bspwm
+;;wm-restack = i3
+;
+;;override-redirect = true
+;
+;;scroll-up = bspwm-desknext
+;;scroll-down = bspwm-deskprev
+;
+;;scroll-up = i3wm-wsnext
+;;scroll-down = i3wm-wsprev
+;tray-position = center
+;;tray-offset-x = 0
+;;tray-offset-y = -20
+;tray-padding = 0
+;tray-transparent = false
+;tray-background = ${colors.background}
 
 [module/xwindow]
 type = internal/xwindow
@@ -156,7 +171,7 @@ label-indicator-margin = 0
 label-indicator-background = ${colors.secondary}
 label-indicator-underline = ${colors.secondary}
 
-[module/filesystem]
+[module/disk]
 type = internal/fs
 interval = 25
 
@@ -164,15 +179,19 @@ mount-0 = /
 
 fixed-values = true
 
-label-mounted = "  Disk:%used% "
-label-mounted-font = 3
-label-mounted-underline = #60eaa5
-label-mounted-overline = #60eaa5
+format-mounted-prefix = 
+format-mounted-prefix-padding = 2
+format-mounted = <label-mounted>
+
+label-mounted = "%used% "
+label-mounted-font = 5
+;label-mounted-underline = #60eaa5
+;label-mounted-overline = #60eaa5
 
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.grey}
 
-label-mounted-background = ${colors.puke}
+label-mounted-background = ${colors.background-white}
 
 [module/bspwm]
 type = internal/bspwm
@@ -197,45 +216,58 @@ label-empty-padding = 2
 type = internal/i3
 format = <label-state> <label-mode>
 index-sort = true
+enable-click = true
 wrapping-scroll = false
 strip-wsnumbers = true
+
+ws-icon-font = 4
+;ws-icon-0 = 1;
+;ws-icon-1 = 2;
+;ws-icon-2 = 3;
+;ws-icon-0 = 4:;
+;ws-icon-1 = 5:;
+;ws-icon-2 = 6:;
+;ws-icon-3 = 7:;
+;ws-icon-7 = 8;
+;ws-icon-9 = Music;
 
 
 ; Only show workspaces on the same output as the bar
 ;pin-workspaces = true
 
-label-mode-padding = 2
+label-mode-padding = 0
 label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
-label-focused-font = 5
+label-focused-font = 4
 label-focused = %name%
 label-focused-foreground = #fff
 label-focused-background = ${colors.puke}
-label-focused-overline = #60eaa5
-label-focused-underline = #60eaa5
+;label-focused-overline = #60eaa5
+;label-focused-underline = #60eaa5
 
-label-focused-padding = 2
-label-focused-margin = 1
+label-focused-padding = 4
+label-focused-margin = 0
 ;label-focused-background = ${colors.puke}
 ;label-focused-underline = ${colors.puke}
 ;label-focused-padding = ${module/bspwm.label-focused-padding}
 
 ; unfocused = Inactive workspace on any monitor
-label-unfocused-font = 5
+label-unfocused-font = 4
 label-unfocused = %name%
 label-unfocused-padding = 2
-label-unfocused-background = ${colors.grey}
-label-unfocused-foreground = #dd222222
+label-unfocused-background = ${colors.background-white}
+label-unfocused-foreground = ${colors.dull_white}
 ;label-unfocused-overline = #c5c5c5
 ;label-unfocused-underline = #c5c5c5
-label-unfocused-margin = 1
+label-unfocused-margin = 0
+
 ; visible = Active workspace on unfocused monitor
-label-visible-font = 5
+label-visible-font = 4
 label-visible = %name%
 label-visible-background = ${self.label-focused-background}
-label-visible-underline = ${self.label-focused-underline}
+;label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
@@ -250,7 +282,10 @@ type = internal/mpd
 host = 127.0.0.1
 port = 6601
 
-format-online = <label-song> 
+format-online-prefix-font = 4
+format-online-prefix = 
+format-online-prefix-padding = 2
+format-online = <label-song>
 ;format-playing = ${self.format-online}
 ;format-pause = ${self.format-online}
 format-stopped = ${self.format-online}
@@ -278,7 +313,7 @@ host = 127.0.0.1
 port = 6601
 
 format-online-font = 3
-format-online = 𝅘𝅥𝅮 <label-time>  <bar-progress> 
+format-online = 𝅘𝅥𝅮 <bar-progress>
 ;format-online-offset = 65
 ;format-playing = ${self.format-online}
 ;format-pause = ${self.format-online}
@@ -297,12 +332,12 @@ icon-next = 
 ;bar-progress-fill = ─
 ;bar-progress-empty = ─
 bar-progress-width = 10
-bar-progress-indicator = ▇
+bar-progress-indicator = О
 bar-progress-indicator-foreground = #bb
-bar-progress-fill = ▇
+bar-progress-fill = ━
 bar-progress-fill-foreground = #55aa55
 bar-progress-fill-font = 3
-bar-progress-empty = ▇
+bar-progress-empty = ━
 bar-progress-empty-foreground = #44
 bar-progress-empty-font = 3
 
@@ -335,10 +370,13 @@ card = intel_backlight
 [module/cpu]
 type = internal/cpu
 interval = 2
-format = <label> <ramp-coreload>
-format-prefix-foreground = ${colors.grey}
-label = CPU: %percentage%%
-label-font = 3
+format = <ramp-coreload>
+format-prefix =" "
+format-prefix-font = 4
+format-prefix-padding = 0
+;format-prefix-foreground = ${colors.white}
+label = %percentage%%
+label-font = 5
 
 ramp-coreload-0 = ▁
 ramp-coreload-1 = ▂
@@ -354,23 +392,42 @@ ramp-coreload-foreground = #55aa55
 [module/memory]
 type = internal/memory
 interval = 1
-format = <label> <bar-used>
-label = RAM[%gb_used%]
-label-font = 3
+format = <label>
+format-padding = 0
+;format-prefix = 
+;format-prefix-font = 4
+;format-prefix-padding = 2
+label = [%gb_used%]
+label-font = 4
+
+bar-free-width = 8
+bar-free-fill = ▌
+bar-free-indicator = ▌
+bar-free-indicator-foreground = ${colors.grey}
+bar-free-empty = ▌
+bar-free-empty-foreground = #44
+
 
 bar-used-indicator =
-bar-used-width = 8
+;bar-used-indicator-foreground = #fff
+bar-used-indicator-foreground-0 = #55aa55
+bar-used-idicator-foreground-1 = #557755
+bar-used-indicator-foreground-2 = #f5a70a
+bar-used-indicator-foreground-3 = #ff5555
+
+bar-used-width = 20
 bar-used-foreground-0 = #55aa55
 bar-used-foreground-1 = #557755
-bar-used-foreground-2 = #f5a70a
-bar-used-foreground-3 = #ff5555
-bar-used-fill = ▐
-bar-used-empty = ▐
-bar-used-empty-foreground = #444444
+;bar-used-foreground-2 = #f5a70a
+;bar-used-foreground-3 = #ff5555
+bar-used-fill = ▍
+
+bar-used-empty = ▍
+bar-used-empty-foreground = #44
 
 [module/wlan]
 type = internal/network
-interface = 
+interface =
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
@@ -392,7 +449,7 @@ ramp-signal-foreground = ${colors.grey}
 
 [module/eth]
 type = internal/network
-interface = 
+interface =
 interval = 3.0
 
 format-connected-underline = #55aa55
@@ -410,27 +467,28 @@ format-disconnected =
 type = internal/date
 interval = 1
 
-date = %b %a, %Y
+date = %b %a %d, %Y
 date-alt = %Y-%m-%d
 
-time = "  %I:%M"
-time-alt = "  %I:%M:%S"
+time = "%I:%M"
+time-alt = "%I:%M:%S"
 
+format-prefix-font = 4
 format-prefix = " "
 format-prefix-padding = 1
-format-prefix-foreground = ${colors.white}
-format-prefix-background = ${colors.pink}
-format-prefix-underline = #e58de6
-format-prefix-overline = #e58de6
+;format-prefix-foreground = ${colors.white}
+format-prefix-background = ${colors.background-white}
+;format-prefix-underline = #e58de6
+;format-prefix-overline = #e58de6
 #format-foreground = ${colors.grey}
 
 #format-background = ${colors.white}
-label-font = 3
+label-font = 5
 label = %date% %time%
-label-padding = 2
-label-background = ${colors.pink}
-label-underline = #e58de6
-label-overline = #e58de6
+label-padding = 1
+label-background = ${colors.background-white}
+;label-underline = #e58de6
+;label-overline = #e58de6
 
 [module/volume]
 type = internal/volume
@@ -466,24 +524,31 @@ battery = BAT0
 adapter = AC
 full-at = 98
 
-format-font = 5
+format-font = 4
+
+format-charging-prefix = ""
+format-charging-prefix-padding = 1
+format-discharging-prefix = ""
+format-discharging-prefix-padding = 1
+label-charging = %percentage%%
+label-discharging = %percentage%%
 
 format-charging-padding = 1
-format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ff63a5
-format-charging-overline = #ff63a5
-format-charging-background = #ff4279 
+format-charging = <label-charging>
+;format-charging-underline = #ff63a5
+;format-charging-overline = #ff63a5
+format-charging-background = ${colors.background-white}
 
 format-discharging-padding = 1
-format-discharging = <ramp-capacity> 
-format-discharging-underline = #ff63a5
-format-discharging-overline = #ff63a5
-format-discharging-background = #ff4279
+format-discharging = <label-discharging>
+;format-discharging-underline = #ff63a5
+;format-discharging-overline = #ff63a5
+format-discharging-background = ${colors.background-white}
 
-format-full-font = 5
-format-full-prefix = ""
-format-full-prefix-foreground = ${colors.grey}
-format-full-underline = ${self.format-charging-underline}
+format-full-font = 4
+format-full-prefix = "Full:"
+format-full-prefix-foreground = ${colors.white}
+;format-full-underline = ${self.format-charging-underline}
 
 ramp-capacity-font = 5
 ramp-capacity-0 = 
@@ -491,7 +556,7 @@ ramp-capacity-1 = 
 ramp-capacity-2 = 
 ramp-capacity-3 = 
 ramp-capacity-4 = 
-ramp-capacity-foreground = ${colors.grey}
+ramp-capacity-foreground = ${colors.white}
 
 animation-charging-font = 5
 animation-charging-0 = 
@@ -499,7 +564,7 @@ animation-charging-1 = 
 animation-charging-2 = 
 animation-charging-3 = 
 animation-charging-4 = 
-animation-charging-foreground = ${colors.grey}
+animation-charging-foreground = ${colors.white}
 animation-charging-framerate = 750
 
 [module/battery1]
@@ -508,10 +573,13 @@ battery = BAT1
 adapter = AC
 full-at = 98
 
-format-charging = <animation-charging> <label-charging>
+label-charging = %percentage%%
+label-discharging = %percentage%%
+
+format-charging = <label-charging>
 format-charging-underline = #ffb52a
 
-format-discharging = <ramp-capacity> 
+format-discharging = <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 
 format-full-prefix = " "
@@ -547,9 +615,9 @@ label = %temperature%
 label-warn = %temperature%
 label-warn-foreground = ${colors.secondary}
 
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
 ramp-foreground = ${colors.grey}
 
 [module/powermenu]
@@ -584,16 +652,43 @@ type = custom/script
 tail = true
 label = %output%
 format = <label>
-format-background = #000000
+format-background = ${colors.background-white}
 format-padding = 2
-format-overline = ${colors.grey}
-format-underline = ${colors.grey}
+;format-overline = ${colors.grey}
+;format-underline = ${colors.grey}
 ;format-offset = 700
 exec = ~/.config/polybar/pavolume.sh --listen
 click-right = exec pavucontrol
 click-left = ~/.config/polybar/pavolume.sh --togmute
 scroll-up = ~/.config/polybar/pavolume.sh --up
 scroll-down = ~/.config/polybar/pavolume.sh --down
+
+[module/menu]
+type = custom/menu
+;content-font = 8
+;expand-right = true
+format-spacing = 2
+
+menu-0-0 = Dev
+menu-0-spacing = 2
+menu-0-0-exec = menu-open-1
+menu-0-1 = Chat
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = Code
+menu-1-0-exec = code &
+menu-1-1 = Quartus
+menu-1-1-exec = ~/scripts/quartus.sh
+menu-1-2 = ModelSim
+menu-1-2-exec = ~/scripts/modelsim.sh
+menu-2-0 = Hexchat
+menu-2-0-exec = hexchat &
+
+label-open = 
+label-close = 
+label-separator = |
+label-separator-spacing = 2
+;content-padding = 4
 
 [settings]
 screenchange-reload = true

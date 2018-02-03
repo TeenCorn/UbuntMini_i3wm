@@ -28,7 +28,7 @@
 
 #i3wm_KEYS#
 #mod key
-set $mod Mod1 
+set $mod Mod1
 set $sup Mod4
 bindsym $mod+x kill
 
@@ -50,13 +50,13 @@ set $white #ffffff
 set $pink #ee829f
 set $peach #f99170
 
-#ROFI 
-bindsym $mod+d exec "rofi -show run -opacity 80 -eh 2 -width 1920 -padding 450 -lines 5 -columns 2 -separator-style solid -font \\"mono 12\\" -bw 0 -hide-scrollbar -color-window \\"#1f222d, #f99170, #0cd800\\" -color-normal \\"#252936, #ffffff, #222222, #005577, #b1b4b3\\""
+#ROFI
+bindsym $mod+d $exec "rofi -show run -width 55 -sidebar-mode -eh 2 -lines 3 -separator-style solid -font \\"mono 12\\" -bw 0 -hide-scrollbar -color-window \\"#55508d, #ffb6c1, #000000\\" -color-normal \\"#7d8cc4, #000000, #bee7e8, #191919, #ffffff\\""
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+# bindsym $mod+d $exec i3-dmenu-desktop
 
 # change focus
 bindsym $mod+h focus left
@@ -77,7 +77,7 @@ bindsym $mod+f fullscreen toggle
 
 ##change container layout (stacked, tabbed, toggle split)
 #bindsym $mod+s layout stacking
-bindsym $mod+t layout tabbed 
+bindsym $mod+t layout tabbed
 bindsym $mod+s layout toggle split
 bindsym $sup+space split toggle
 
@@ -94,23 +94,29 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 ##VARIABLES
-set $ws1 "1:  "
-set $ws2 "2:  "
-set $ws3 "3:  "
-set $ws10 "4:"
-set $ws9 "5:orn "
-set $ws8 "6:  "
-set $term termite 
+set $ws1 "1: "
+set $ws2 "2: "
+set $ws3 "3: "
+set $ws4 "4: "
+set $ws5 "5: "
+set $ws6 "6: "
+set $ws7 "7: "
+set $ws8 "8:"
+set $ws9 "9: "
+set $ws10 "10:"
+set $term termite
+set $compton compton -cCfzb -r 5 -I 0.06 -O 0.06 --inactive-dim 0.2 -l 0 -t 0 --shadow-exclude 'class_g ?= "Notify-osd"'
+set $exec exec --no-startup-id
 set $dummy $term --name=dummy -e
 
 ##switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
@@ -119,10 +125,10 @@ bindsym $mod+0 workspace $ws10
 bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
 bindsym $mod+Shift+3 move container to workspace $ws3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
@@ -132,7 +138,7 @@ bindsym $mod+Shift+c reload
 ##restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 ##exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec i3-msg exit
+bindsym $mod+Shift+e $exec i3-msg exit
 
 
 ##Start i3bar to display a workspace bar (plus the system information i3status
@@ -156,74 +162,76 @@ bindsym $mod+Shift+e exec i3-msg exit
 ##KEY_BINDINGS##############################################################
 
 #i3wm_STARTUP_APPS
-exec_always --no-startup-id feh --bg-scale ~/.config/wall.jpg			#Applies background to desktop
-exec --no-startup-id compton 						#Transparency and effects
-exec --no-startup-id nm-applet						# Puts nm icon in corner
-exec --no-startup-id mpd						#Music player daemon
-exec --no-startup-id $term --name=dropdown 				#Dropdown term
-exec --no-startup-id synclient TouchpadOff=1			#Turns off touchpad
-exec --no-startup-id fcitx
-exec --no-startup-id exec xfce4-power-manager
+exec_always --no-startup-id feh --bg-scale ~/.config/wall.jpg		#Applies background to desktop
+$exec $compton 						#Transparency and effects
+$exec nm-applet						# Puts nm icon in corner
+$exec mpd						#Music player daemon
+$exec $term --name=dropdown 				#Dropdown term
+$exec synclient TouchpadOff=1			#Turns off touchpad
+$exec fcitx
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 ##SHUTDOWN COMMAND
-bindsym $mod+Shift+x exec killall mpd; exec systemctl poweroff 		#Shutdown computer
-bindsym $mod+Shift+BackSpace exec killall mpd; exec systemctl reboot 			#Reboots computer
-bindsym $mod+BackSpace exec .config/i3/lock.sh 				#Locks and suspends
+bindsym $mod+Shift+x $exec killall mpd; $exec systemctl poweroff 		#Shutdown computer
+bindsym $mod+Shift+BackSpace $exec killall mpd; $exec systemctl reboot 			#Reboots computer
+bindsym $mod+BackSpace $exec .config/i3/lock.sh 				#Locks and suspends
 
 ##Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle # mute sound
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute 2 toggle
+bindsym XF86AudioRaiseVolume $exec pactl set-sink-volume 1 +5% #increase sound volume
+bindsym XF86AudioLowerVolume $exec pactl set-sink-volume 1 -5% #decrease sound volume
+bindsym XF86AudioMute $exec pactl set-sink-mute 1 toggle # mute sound
+bindsym XF86AudioMicMute $exec pactl set-source-mute 2 toggle
 
 #MEDIA_KEYS
 bindsym XF86AudioPlay exec playerctl play
 bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
-bindsym $mod+p exec mpc -p 6601 toggle
-bindsym $mod+Shift+p exec mpc -p 6601 stop
-bindsym $mod+period exec mpc -p 6601 next
-bindsym $mod+Shift+period exec mpc -p 6601 seek +10
-bindsym $mod+comma exec mpc -p 6601 prev
-bindsym $mod+Shift+comma exec mpc -p 6601 seek -10
-bindsym $mod+m exec mpc -p 6601 volume 0
-bindsym $mod+Shift+m exec mpc -p 6601 volume +100
-bindsym $sup+BackSpace exec mpc -p 6601 seek 0%
+bindsym $mod+p $exec mpc -p 6601 toggle
+bindsym $mod+Shift+p $exec mpc -p 6601 stop
+bindsym $mod+period $exec mpc -p 6601 next
+bindsym $mod+Shift+period $exec mpc -p 6601 seek +10
+bindsym $mod+comma $exec mpc -p 6601 prev
+bindsym $mod+Shift+comma $exec mpc -p 6601 seek -10
+bindsym $mod+m $exec mpc -p 6601 volume 0
+bindsym $mod+Shift+m $exec mpc -p 6601 volume +100
+bindsym $sup+BackSpace $exec mpc -p 6601 seek 0%
 
-set $auto exec ~/.config/i3/auto.sh
+set $auto $exec ~/.config/i3/auto.sh
 #APP_KEYS
-bindsym $mod+Return exec $term				 		#Starts a terminal
-bindsym $mod+q workspace $ws2; exec qutebrowser					#Starts qutebrowser
-bindsym $mod+g workspace $ws3; exec gimp					#starts gimp
-#bindsym $mod+r exec --no-startup-id $term --title=Ranger --name=ranger -e ranger; exec sleep 1; exec $term --name=dummy -e ~/.config/i3/exclude.sh 	#starts ranger
-bindsym $mod+r exec --no-startup-id urxvt -e ranger
-bindsym $mod+e exec thunar							#starts thunar
-bindsym $mod+Shift+f workspace $ws2; exec firefox				#starts firefox
-bindsym $mod+v workspace $ws3; exec $term -e vim			#starts vim
+bindsym $mod+Return workspace $ws1; layout tabbed; $exec $term				 		#Starts a terminal
+bindsym $mod+Shift+Return $exec $term
+bindsym $mod+q workspace $ws2; $exec qutebrowser					#Starts qutebrowser
+#bindsym $mod+g workspace $ws3; exec gimp					#starts gimp
+bindsym $mod+g gaps inner all set 20; gaps outer all set 0
+bindsym $mod+Shift+g gaps inner all set 0; gaps outer all set 0
+#bindsym $mod+r $exec $term --title=Ranger --name=ranger -e ranger; exec sleep 1; exec $term --name=dummy -e ~/.config/i3/exclude.sh 	#starts ranger
+bindsym $mod+r $exec urxvt -e ranger
+bindsym $mod+e $exec thunar							#starts thunar
+bindsym $mod+Shift+f workspace $ws2; $exec firefox				#starts firefox
+bindsym $mod+v workspace $ws3; $exec $term -c ~/.vim/config -e nvim			#starts vim
 bindsym $mod+Shift+s scratchpad show
 bindsym $mod+F8 exec /home/teencorn/android-studio/bin/studio.sh
-#bindsym $mod+semicolon exec $term --name=htop --config=/home/teencorn/.config/termite2/config -e htop
-bindsym $mod+F12 exec $term --name=ncmpcpp -e ncmpcpp
-bindsym $mod+w exec $term --name=w3m -e "w3m -B"
-bindsym $sup+m workspace $ws1; exec $term --name=youtube -e mpsyt
-bindsym $sup+r exec redshift -O 3200
-bindsym $sup+Shift+r exec redshift -x
-bindsym $sup+c exec fcitx -o Pinyin
+bindsym $mod+semicolon $exec $term --name=htop -e htop
+bindsym $mod+F12 workspace $ws10; $exec $term --name=ncmpcpp -e ncmpcpp, $exec $term --name=cava -e 'cava'
+bindsym $mod+w $exec $term --name=w3m -e "w3m -B"
+bindsym $sup+m workspace $ws1; $exec $term --name=youtube -e mpsyt
+bindsym $sup+r $exec redshift -O 3200
+bindsym $sup+Shift+r $exec redshift -x
 #bindsym $sup+Return exec $dummy ~/.config/i3/auto.sh
-bindsym $sup+f exec wine .wine/drive_c/Program\ Files\ \(x86\)/Foxit\ Software/Foxit\ Reader/FoxitReader.exe
+bindsym $sup+f $exec wine .wine/drive_c/Program\ Files\ \(x86\)/Foxit\ Software/Foxit\ Reader/FoxitReader.exe
 
 ##i3wm_AUTISM#############################################################
 
 #ARBITRARY_WINDOW_SETTINGS
-new_window pixel 3
+new_window pixel 1
 
 for_window [class="Thunar"] floating enable	#When opened, make it float
-
 for_window [instance="dropdown"] floating enable	#For "dropdown" terminal
 for_window [instance="dropdown"] move scratchpad
 for_window [instance="dummy"] move scratchpad
+for_window [title="Android Emulator - ."] floating enable
+#for_window [title="qutebrowser$"] floating enable
 
 #for_window [instance="ranger"] floating enable
 for_window [instance="htop"] floating enable
@@ -240,11 +248,11 @@ bindsym $mod+Shift+y resize grow height 30 px or 30ppt
 bindsym $mod+Shift+u resize shrink height 30 px or 30 ppt
 
 #SCREENSHOTS
-bindsym $sup+s exec scrot '%Y-%m-%d_$wx$h.png' -q 100 -e 'mv $f ~/Pictures/Screenshots'
+bindsym $sup+s $exec scrot '%Y-%m-%d_$wx$h.png' -q 100 -e 'mv $f ~/Pictures/Screenshots'
 
 #Brightness adjustment
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
+bindsym XF86MonBrightnessUp $exec xbacklight -inc 10 # increase screen brightness
+bindsym XF86MonBrightnessDown $exec xbacklight -dec 10 # decrease screen brightness
 
 #The mouse has no control over what container you are focused on
 focus_follows_mouse no
@@ -261,13 +269,12 @@ client.background	#2B2C2B
 bindsym $mod+o move scratchpad
 
 #ESC is now caps, caps is now ESC
-exec_always setxkbmap -option caps:swapescape
+exec_always --no-startup-id setxkbmap -option caps:swapescape
 
-#Just in case I need it 
-exec export XDG_CURRENT_DEKTOP=GNOME
+#Just in case I need it
+$exec export XDG_CURRENT_DEKTOP=GNOME
 
 # i3-gaps settings
-gaps inner 20
+gaps inner 0
 gaps outer 0
-
-
+smart_gaps on

@@ -12,12 +12,16 @@ basic_programs ()
 	sudo apt-get update
 	sudo apt-get install acestream-engine -yy
 	## Pending: Anki, arc-theme, texlive
-	sudo apt install -yy -q xorg vim rofi feh compton pulseaudio pavucontrol ranger thunar ubuntu-restricted-extras git software-properties-common w3m build-essential cmake automake checkinstall lxappearance gtk-chtheme qt4-qtconfig network-manager redshift alarm-clock-applet mpd mpc ncmpcpp zip gdebi htop fonts-takao xbacklight notify-osd xdotool wmctrl wine imagemagick zsh language-pack-zh-hant language-pack-zh-hans language-pack-ja fcitx clang libreoffice libreoffice-gtk pulseaudio-module-bluetooth bluez caca-utils highlight pandoc mediainfo acestream-engine openvpn rxvt-unicode-256color texlive curl anki
+	sudo apt install -yy -q xorg vim rofi feh compton pulseaudio pavucontrol ranger thunar ubuntu-restricted-extras git software-properties-common w3m build-essential cmake automake checkinstall lxappearance gtk-chtheme qt4-qtconfig network-manager redshift alarm-clock-applet mpd mpc ncmpcpp zip gdebi htop fonts-takao xbacklight notify-osd xdotool wmctrl wine imagemagick zsh language-pack-zh-hant language-pack-zh-hans language-pack-ja fcitx clang libreoffice libreoffice-gtk pulseaudio-module-bluetooth bluez caca-utils highlight pandoc mediainfo openvpn rxvt-unicode-256color texlive curl anki lm-sensors mupdf neovim libpulse-dev
 
 	#Installing the latest mpv
 	sudo add-apt-repository ppa:mc3man/mpv-tests -y
 	sudo apt update -yy
 	sudo apt install mpv -yy
+
+	sudo add-apt-repository ppa:tehtotalpwnage/ppa -yy
+	sudo apt update -yy
+	sudo apt install cava -yy
 }
 
 ## Prompts the user if they would like to delete flash, mainly due to security concerns, after downloading all the basic programs.
@@ -75,20 +79,31 @@ i3_install ()
 python_stuff ()
 {
 	sudo apt -yy install python3.5 python3-lxml python-tox python3-pyqt5 python3-pyqt5.qtwebkit python3-pyqt5.qtquick python3-sip python3-jinja2 python3-pygments python3-yaml python3-pip python-dev python3-dev	## Installing python
-	pip3 install mps-youtube youtube_dl
+	pip3 install mps-youtube youtube_dl tox neovim
 
 }
 
 ## Downloads all my fonts and my plugin manager for vim
 git_stuff ()
 {
+	cd ~/
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim	## Vim plugins
 	mkdir .antigen
 	curl -L git.io/antigen > .antigen/antigen.zsh
 
+	## Install browser; now default browser
+	git clone https://github.com/qutebrowser/qutebrowser.git ~/.local/.qutebrowser
+	cd ~/.local/.qutebrowser
+	tox -e mkvenv-pypi
+	cd ../bin
+	touch qutebrowser && echo -e "#\!/bin/bash\n~/.local/.qutebrowser/.venv/bin/python3 -m qutebrowser \"\$@\"" > qutebrowser && chmod +x qutebrowser
+
+	#Back for certain video types qutebrowser doesn't support
+	cd ~/.local
 	wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-55.2.2.en-US.linux-x86_64.tar.bz2
 	tar -xjf waterfox-55.2.2.en-US.linux-x86_64.tar.bz2
-	ln -s ~/waterfox/waterfox ~/.local/bin/firefox
+	mv waterfox .waterfox
+	ln -s ~/.local/.waterfox/waterfox ~/.local/bin/waterfox
 }
 
 ## Downloads my terminal emulator termite
@@ -125,14 +140,17 @@ confs ()
 	mkdir ~/.config
 	mkdir ~/.config/i3
 	cp -R .config/i3 ~/.config/
-	cp -R .config/mpd/ ~/.config/
+	cp -R .config/mpd/ ~/.config/ && touch ~/.config/mpd/mpd.db ~/.config/mpd/mpd.log ~/.config/mpd/mpd.pid ~/.config/mpd/mpdstate
 	cp -R .config/.ncmpcpp/ ~/
 	cp -R .config/polybar/ ~/.config/
 	cp -R .config/termite ~/.config/
+	mv ~/.config/termite/nvimconfig ~/.vim/config
 	cp -R .config/ranger ~/.config/
 	cp -R .config/.vimrc ~/
+	cp -R .config/nvim ~/.config/
 	cp -R .fonts/ ~/
-#	cp -R .zsh/ ~/
+	cp -R .config/qutebrowser ~/.config
+	cp -R .config/cava ~/.config
 	cp .Xresources ~/
 	cp .zshrc ~/
 	cp .zprofile ~/
@@ -141,7 +159,9 @@ confs ()
 	mv wall.jpg ~/.config/
 	cd .. && rm -rf UbuntuMini_i3wm/
 
-	vim +PluginInstall +qall
+	##edit $PATH
+
+	nvim +PlugInstall +qall
 	xrdb .Xresources
 }
 
