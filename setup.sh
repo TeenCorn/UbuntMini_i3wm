@@ -163,10 +163,10 @@ confs ()
 	mv wall.jpg ~/.config/
 	cd .. && rm -rf UbuntuMini_i3wm/
 
-	##edit $PATH
-
 	nvim +PlugInstall +qall
 	xrdb .Xresources
+	## Edit $PATH here
+	sudo nvim /etc/zsh/zshenv
 }
 
 re ()
