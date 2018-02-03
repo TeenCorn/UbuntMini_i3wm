@@ -22,6 +22,10 @@ basic_programs ()
 	sudo add-apt-repository ppa:tehtotalpwnage/ppa -yy
 	sudo apt update -yy
 	sudo apt install cava -yy
+
+	sudo add-apt-repository ppa:dawidd0811/neofetch
+	sudo apt update
+	sudo apt install neofetch
 }
 
 ## Prompts the user if they would like to delete flash, mainly due to security concerns, after downloading all the basic programs.
