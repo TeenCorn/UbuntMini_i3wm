@@ -153,7 +153,7 @@ confs ()
 	cp -R .config/.ncmpcpp/ ~/
 	cp -R .config/polybar/ ~/.config/
 	cp -R .config/termite ~/.config/
-	mv ~/.config/termite/nvimconfig ~/.vim/config
+	cp ~/.config/termite/nvimconfig ~/.vim/
 	cp -R .config/ranger ~/.config/
 	cp -R .config/.vimrc ~/
 	cp -R .config/nvim ~/.config/
