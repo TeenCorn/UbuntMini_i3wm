@@ -147,7 +147,7 @@ case $(basename "$(cat "/proc/$PPID/comm")") in
     else
         RPROMPT='$(git_prompt_string)'
 		# Use autosuggestion
-		source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+		source ~/.antigen/bundles/zsh-users/zsh-autosuggestions/zsh-autosuggestions.zsh
 		ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
   		ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
   	fi
