@@ -118,7 +118,7 @@ case $(basename "$(cat "/proc/$PPID/comm")") in
     ;;
   konsole|qterminal)
     	RPROMPT='$(git_prompt_string)'
-    ;;
+    ;;   
   'tmux: server')
   	if $(ps -p$PPID| grep -q -e konsole -e qterminal); then
     	RPROMPT='$(git_prompt_string)'
@@ -126,7 +126,7 @@ case $(basename "$(cat "/proc/$PPID/comm")") in
         RPROMPT='$(git_prompt_string)'
 		## Base16 Shell color themes.
 		#possible themes: 3024, apathy, ashes, atelierdune, atelierforest, atelierhearth,
-		#atelierseaside, bespin, brewer, chalk, codeschool, colors, default, eighties,
+		#atelierseaside, bespin, brewer, chalk, codeschool, colors, default, eighties, 
 		#embers, flat, google, grayscale, greenscreen, harmonic16, isotope, londontube,
 		#marrakesh, mocha, monokai, ocean, paraiso, pop (dark only), railscasts, shapesifter,
 		#solarized, summerfruit, tomorrow, twilight

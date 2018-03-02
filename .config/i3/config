@@ -209,11 +209,11 @@ bindsym $mod+Shift+g gaps inner all set 0; gaps outer all set 0
 bindsym $mod+r $exec urxvt -e ranger
 bindsym $mod+e $exec thunar							#starts thunar
 bindsym $mod+Shift+f workspace $ws2; $exec firefox				#starts firefox
-bindsym $mod+v workspace $ws3; $exec $term -c ~/.vim/config -e nvim			#starts vim
+bindsym $mod+v workspace $ws3; $exec $term -e nvim			#starts vim
 bindsym $mod+Shift+s scratchpad show
 bindsym $mod+F8 exec /home/teencorn/android-studio/bin/studio.sh
 bindsym $mod+semicolon $exec $term --name=htop -e htop
-bindsym $mod+F12 workspace $ws10; $exec $term --name=ncmpcpp -e ncmpcpp, $exec $term --name=cava -e 'cava'
+bindsym $mod+F12 workspace $ws10; append_layout ~/.config/i3/workspace-10.json, $exec $term --name=alsa -e "alsamixer -c 1", $exec $term --name=ncmpcpp -e ncmpcpp, $exec $term --name=cava -e 'cava'
 bindsym $mod+w $exec $term --name=w3m -e "w3m -B"
 bindsym $sup+m workspace $ws1; $exec $term --name=youtube -e mpsyt
 bindsym $sup+r $exec redshift -O 3200

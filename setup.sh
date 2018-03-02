@@ -13,10 +13,10 @@ basic_programs ()
 	sudo apt-get update -yy
 	sudo apt-get install acestream-engine -yy
 	## Pending: Anki, arc-theme, texlive
-	sudo apt install -yy -q xorg vim rofi feh compton pulseaudio pavucontrol ranger thunar ubuntu-restricted-extras git software-properties-common w3m build-essential cmake automake checkinstall lxappearance gtk-chtheme qt4-qtconfig network-manager redshift alarm-clock-applet mpd mpc ncmpcpp zip gdebi htop fonts-takao xbacklight notify-osd xdotool wmctrl wine imagemagick zsh language-pack-zh-hant language-pack-zh-hans language-pack-ja fcitx clang libreoffice libreoffice-gtk pulseaudio-module-bluetooth bluez caca-utils highlight pandoc mediainfo openvpn rxvt-unicode-256color texlive curl anki lm-sensors mupdf libpulse-dev
+	sudo apt install -yy -q xorg rofi feh compton pulseaudio pavucontrol ranger thunar ubuntu-restricted-extras git software-properties-common w3m build-essential cmake automake checkinstall lxappearance gtk-chtheme qt4-qtconfig network-manager redshift alarm-clock-applet mpd mpc ncmpcpp zip gdebi htop fonts-takao xbacklight notify-osd xdotool wmctrl wine imagemagick zsh language-pack-zh-hant language-pack-zh-hans language-pack-ja fcitx clang libreoffice libreoffice-gtk pulseaudio-module-bluetooth bluez caca-utils highlight pandoc mediainfo openvpn rxvt-unicode-256color texlive curl anki lm-sensors mupdf libpulse-dev
 
 	#Installing the latest mpv
-	sudo add-apt-repository ppa:mc3man/mpv-tests -y
+	sudo add-apt-repository ppa:mc3man/mpv-tests -yy
 	sudo apt update -yy
 	sudo apt install mpv -yy
 
@@ -24,11 +24,11 @@ basic_programs ()
 	sudo apt update -yy
 	sudo apt install cava -yy
 
-	sudo add-apt-repository ppa:dawidd0811/neofetch
+	sudo add-apt-repository ppa:dawidd0811/neofetch -yy
 	sudo apt update -yy
 	sudo apt install neofetch -yy
 
-	sudo add-apt-repository ppa:neovim-ppa/stable
+	sudo add-apt-repository ppa:neovim-ppa/stable -yy
 	sudo apt-get update -yy
 	sudo apt-get install neovim -yy
 }
@@ -96,7 +96,8 @@ python_stuff ()
 git_stuff ()
 {
 	cd ~/
-	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim	## Vim plugins
+	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+		    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	mkdir .antigen
 	curl -L git.io/antigen > .antigen/antigen.zsh
 
@@ -111,6 +112,7 @@ git_stuff ()
 	cd ~/.local
 	wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-55.2.2.en-US.linux-x86_64.tar.bz2
 	tar -xjf waterfox-55.2.2.en-US.linux-x86_64.tar.bz2
+	rm waterfox-55.2.2.en-US.linux-x86_64.tar.bz2
 	mv waterfox .waterfox
 	ln -s ~/.local/.waterfox/waterfox ~/.local/bin/waterfox
 }
@@ -153,29 +155,31 @@ confs ()
 	cp -R .config/.ncmpcpp/ ~/
 	cp -R .config/polybar/ ~/.config/
 	cp -R .config/termite ~/.config/
-	cp ~/.config/termite/nvimconfig ~/.vim/
 	cp -R .config/ranger ~/.config/
-	cp -R .config/.vimrc ~/
 	cp -R .config/nvim ~/.config/
 	cp -R .fonts/ ~/
-	cp -R .config/qutebrowser ~/.config
 	cp -R .config/cava ~/.config
 	cp .Xresources ~/
 	cp .zshrc ~/
 	cp .zprofile ~/
 	cp .profile ~/
-	wget https://raw.githubusercontent.com/TeenCorn/UbuntuMini_i3wm/master/wall.jpg
-	mv wall.jpg ~/.config/
+	cp wall.jpg ~/.config/
 	cd .. && rm -rf UbuntuMini_i3wm/
 
 	nvim +PlugInstall +qall
+	cd ~/.local/share/nvim/plugged/YouCompleteMe/
+	./install.py --clang-completer
 	xrdb .Xresources
 	## Edit $PATH here
-	sudo nvim /etc/zsh/zshenv
+	## Used to add $HOME/.local/bin
+	sudo nvim +20 /etc/zsh/zshenv
+	cd ~/
 }
 
 re ()
 {
+	cd ~/ && rm setup.sh
+	chsh -s $(which zsh)
 	clear
 	echo "Want to reboot? y/n: "
 	read option
@@ -193,6 +197,4 @@ git_stuff
 term
 polybar_install
 confs
-cd ~/ && rm setup.sh
-chsh -s $(which zsh)
 re
