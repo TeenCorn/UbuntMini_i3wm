@@ -163,7 +163,7 @@ confs ()
 	cp .zshrc ~/
 	cp .zprofile ~/
 	cp .profile ~/
-	cp wall.jpg ~/.config/
+	cp readme_pics/wall.png ~/.config/
 	cd .. && rm -rf UbuntuMini_i3wm/
 
 	nvim +PlugInstall +qall

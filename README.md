@@ -1,6 +1,6 @@
 # My Ubuntu minimal i3wm Install
 
-![pic1](pic1.png)
+![pic1](readme_pics/pic1.png)
 
 ## Setup.sh
 	$ wget https://raw.githubusercontent.com/TeenCorn/UbuntMini_i3wm/master/setup.sh && chmod +x setup.sh
@@ -18,7 +18,7 @@ From:
 
 To:
 
-	export path="/usr/sbin:/usr/local/bin:/usr/bin:/bin:/usr/games:$home/.local/bin"
+	export PATH="/usr/sbin:/usr/local/bin:/usr/bin:/bin:/usr/games:$HOME/.local/bin"
 
 This is done manually :(
 
@@ -29,9 +29,13 @@ Todo:  Figure out how to do this automatically with bash later
 + Terminess Nerd Font
 
 ## Options
-The setup.sh script ask you whether or not you would like to uninstall **Flash** from your computer since it's automatically installed with ubuntu-restricted-extras. 
+The setup.sh script ask you whether or not you would like to uninstall **Flash** from your computer since it's automatically installed with ubuntu-restricted-extras.
 
-**REGARDLESS** of the choice you make, y/n, the script will install gstreamer1.0-plugins-{bad,good,ugly,base}. I do this because I will eventually get rid of it later and so I won't have to install gstreamer manually later on. I only have flash because I need it for a website for my class.
+**REGARDLESS** of the choice you make, y/n, the script will install
+
+	gstreamer1.0-plugins-{bad,good,ugly,base}
+
+I do this because I will eventually get rid of it later and so I won't have to install gstreamer manually later on. I only have flash because I need it for a website for my class.
 
 #### Gaps
 By default gaps are turned off but can be activated with
@@ -43,3 +47,11 @@ To turn off gaps
 	Shift+alt+g
 
 #### Polybar configs
+
+Config.white:
+
+![white](readme_pics/white.png)
+
+Config.fruity:
+
+![fruity](readme_pics/fruity.png)
