@@ -28,6 +28,23 @@ Todo:  Figure out how to do this automatically with bash later
 
 + Terminess Nerd Font
 
+## Keybindings
+Keybindings found in
+
+	$HOME/.config/i3/config
+
+![config](readme_pics/config.png)
+
+## Music Workspace
+
+![music](readme_pics/music.png)
+
+Workspace 10 is dedicated to music playing. This workspace has a layout bound to a keybinding. So when you:
+
+	alt+F12
+
+it automatically fills the screen with the setup above
+
 ## Options
 The setup.sh script ask you whether or not you would like to uninstall **Flash** from your computer since it's automatically installed with ubuntu-restricted-extras.
 
@@ -55,3 +72,7 @@ Config.white:
 Config.fruity:
 
 ![fruity](readme_pics/fruity.png)
+
+Polybar launch scripts are in:
+
+	~/.config/polybar/
