@@ -156,12 +156,12 @@ confs ()
 	cp -R .config/termite ~/.config/
 	cp -R .config/ranger ~/.config/
 	cp -R .config/nvim ~/.config/
-	cp -R .fonts/ ~/
+	cp -R .config/.fonts/ ~/
 	cp -R .config/cava ~/.config
 	cp .config/.zshrc ~/
 	cp .config/.zprofile ~/
 	cp .config/.profile ~/
-	cp .config/wall.png ~/.config/
+	cp .config/wall.jpg ~/.config/
 	cd .. && rm -rf dummy/
 
 	nvim +PlugInstall +qall
