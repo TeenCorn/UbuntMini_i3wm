@@ -144,8 +144,9 @@ confs ()
 {
 	##Getting configs
 	cd ~/
+	mkdir dummy
+	cd dummy
 	git clone https://github.com/TeenCorn/.config.git
-	cd UbuntuMini_i3wm/
 	mkdir ~/.config
 	mkdir ~/.config/i3
 	cp -R .config/i3 ~/.config/
@@ -157,11 +158,11 @@ confs ()
 	cp -R .config/nvim ~/.config/
 	cp -R .fonts/ ~/
 	cp -R .config/cava ~/.config
-	cp .zshrc ~/
-	cp .zprofile ~/
-	cp .profile ~/
+	cp .config/.zshrc ~/
+	cp .config/.zprofile ~/
+	cp .config/.profile ~/
 	cp .config/wall.png ~/.config/
-	cd .. && rm -rf UbuntuMini_i3wm/
+	cd .. && rm -rf dummy/
 
 	nvim +PlugInstall +qall
 	cd ~/.local/share/nvim/plugged/YouCompleteMe/
