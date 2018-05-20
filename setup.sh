@@ -33,6 +33,7 @@ basic_programs ()
 	sudo apt-get install neovim -yy
 }
 
+## 18.04 Ubuntu does not include flash in restricted-extras meta package
 ## Prompts the user if they would like to delete flash, mainly due to security concerns, after downloading all the basic programs.
 ## I have not learned how to install ubuntu-restricted-extras without flash yet so that will be done later on.
 flash_delete ()
@@ -47,15 +48,12 @@ flash_delete ()
 	fi
 
 	sudo apt -yy install gstreamer1.0-plugins-{base,good,bad,ugly} gstreamer1.0-libav ## Getting a youtube videos to work without flash
-
 }
 
-## Downloads the lastest stable version of i3wm for Ubuntu. Don't like the one in the regular repo since it can't use json. Bumblebee-status and Polybar
-## use json
+## Downloads the lastest stable version of i3wm for Ubuntu.
 i3_install ()
 {
 	clear
-	## This chuck gets the lastest stable version of i3wm on ubuntu.
 	sudo /usr/lib/apt/apt-helper download-file http://debian.sur5r.net/i3/pool/main/s/sur5r-keyring/sur5r-keyring_2018.01.30_all.deb keyring.deb SHA256:baa43dbbd7232ea2b5444cae238d53bebb9d34601cc000e82f11111b1889078a
 	sudo apt install ./keyring.deb -y
 	sudo su -c "echo 'deb http://debian.sur5r.net/i3/ $(grep '^DISTRIB_CODENAME=' /etc/lsb-release | cut -f2 -d=) universe' >> /etc/apt/sources.list.d/sur5r-i3.list"
@@ -108,11 +106,11 @@ git_stuff ()
 	cd ../bin
 	touch qutebrowser && echo -e "#\!/bin/bash\n~/.local/.qutebrowser/.venv/bin/python3 -m qutebrowser \"\$@\"" > qutebrowser && chmod +x qutebrowser
 
-	#Back for certain video types qutebrowser doesn't support
+	# Waterfox just in case qutebrowser fucks up
 	cd ~/.local
-	wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-55.2.2.en-US.linux-x86_64.tar.bz2
-	tar -xjf waterfox-55.2.2.en-US.linux-x86_64.tar.bz2
-	rm waterfox-55.2.2.en-US.linux-x86_64.tar.bz2
+	wget https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-56.2.0.en-US.linux-x86_64.tar.bz2
+	tar -xjf waterfox-56.2.0.en-US.linux-x86_64.tar.bz2
+	rm waterfox-56.2.0.en-US.linux-x86_64.tar.bz2
 	mv waterfox .waterfox
 	ln -s ~/.local/.waterfox/waterfox ~/.local/bin/waterfox
 }
@@ -146,7 +144,7 @@ confs ()
 {
 	##Getting configs
 	cd ~/
-	git clone https://github.com/TeenCorn/UbuntuMini_i3wm.git
+	git clone https://github.com/TeenCorn/.config.git
 	cd UbuntuMini_i3wm/
 	mkdir ~/.config
 	mkdir ~/.config/i3
@@ -159,17 +157,15 @@ confs ()
 	cp -R .config/nvim ~/.config/
 	cp -R .fonts/ ~/
 	cp -R .config/cava ~/.config
-	cp .Xresources ~/
 	cp .zshrc ~/
 	cp .zprofile ~/
 	cp .profile ~/
-	cp readme_pics/wall.png ~/.config/
+	cp .config/wall.png ~/.config/
 	cd .. && rm -rf UbuntuMini_i3wm/
 
 	nvim +PlugInstall +qall
 	cd ~/.local/share/nvim/plugged/YouCompleteMe/
 	./install.py --clang-completer
-	xrdb .Xresources
 	## Edit $PATH here
 	## Used to add $HOME/.local/bin
 	sudo nvim +20 /etc/zsh/zshenv
